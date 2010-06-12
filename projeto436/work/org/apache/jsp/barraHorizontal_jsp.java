@@ -57,6 +57,14 @@ public final class barraHorizontal_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("\t\t\t\t<td><input type=\"password\" name=\"password\" size=\"11\"></td>\r\n");
       out.write("\t\t\t\t<td><input type=\"submit\" value=\"      Entrar      \" name=\"botaoLogin\"></td>\r\n");
       out.write("\t\t\t</tr>\r\n");
+      out.write("\t\t\t<tr>\r\n");
+      out.write("\t\t\t\t<td></td>\r\n");
+      out.write("\t\t\t\t<td></td>\r\n");
+      out.write("\t\t\t\t<td></td>\r\n");
+      out.write("\t\t\t\t<td></td>\r\n");
+      out.write("\t\t\t\t<!--  <td><a href=\"#\"><font size=\"2\">usuario</font></a></td> -->\r\n");
+      out.write("\t\t\t\t<td><a href=\"cadastro.jsp\"<font color=\"white\" size=\"2\">     Cadastrar    </font></td></a>\r\n");
+      out.write("\t\t\t</tr>\r\n");
       out.write("\t\t\t</table>\r\n");
       out.write("\t\t\t</form>\r\n");
       out.write("\t\t</div>\r\n");

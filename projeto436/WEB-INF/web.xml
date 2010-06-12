@@ -89,6 +89,16 @@
       <url-pattern>/CarregaInicio/*</url-pattern>
    </servlet-mapping>
 
+   <servlet>
+      <servlet-name>CadastroServlet</servlet-name>
+      <servlet-class>CadastroServlet</servlet-class>
+      <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+   <servlet-mapping>
+      <servlet-name>CadastroServlet</servlet-name>
+      <url-pattern>/CadastroServlet/*</url-pattern>
+   </servlet-mapping>
 
 </web-app>
 
