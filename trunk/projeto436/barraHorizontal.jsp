@@ -16,6 +16,14 @@
 				<td><input type="password" name="password" size="11"></td>
 				<td><input type="submit" value="      Entrar      " name="botaoLogin"></td>
 			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<!--  <td><a href="#"><font size="2">usuario</font></a></td> -->
+				<td><a href="cadastro.jsp"<font color="white" size="2">     Cadastrar    </font></td></a>
+			</tr>
 			</table>
 			</form>
 		</div>

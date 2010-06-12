@@ -45,7 +45,6 @@ public final class barraLateral_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("\t\t<ul>\r\n");
       out.write("\t\t\t<li>\r\n");
       out.write("\t\t\t\t<h2>Aliquam tempus</h2>\r\n");
-      out.write("\t\t\t\t<h2>Aliquam tempus</h2>\r\n");
       out.write("\t\t\t\t<p>Mauris vitae nisl nec metus placerat perdiet est. Phasellus dapibus semper urna. Pellentesque ornare, orci in consectetuer hendrerit, volutpat.</p>\r\n");
       out.write("\t\t\t</li>\r\n");
       out.write("\t\t\t<li>\r\n");
