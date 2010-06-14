@@ -18,10 +18,10 @@ public class ControleDeLogin {
 	 * existir */
 	public Usuario login(String login, String senha) {
 		Usuario usuario = this.getUsuario(login);
-		if (usuario.compareSenha(senha))
-			this.usuarioLogado = usuario;
-		else
+		if (usuario == null || usuario.compareSenha(senha) == false)
 			this.usuarioLogado = null;
+		else
+			this.usuarioLogado = usuario;
 		return this.usuarioLogado;
 	}
 	
