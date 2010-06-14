@@ -16,6 +16,16 @@
       <url-pattern>/EfetuaLogin/*</url-pattern>
    </servlet-mapping>
   
+   <servlet>
+      <servlet-name>EfetuaLogout</servlet-name>
+      <servlet-class>EfetuaLogout</servlet-class>
+      <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+   <servlet-mapping>
+      <servlet-name>EfetuaLogout</servlet-name>
+      <url-pattern>/EfetuaLogout/*</url-pattern>
+   </servlet-mapping>  
   
   <servlet>
       <servlet-name>CarregaListaArtigos</servlet-name>
