@@ -20,7 +20,9 @@ public class EfetuaLogout extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		//Inicializa o sistema
+		
+		request.getSession().setAttribute("sistema", null);
+		/*//Inicializa o sistema
 		Sistema sistema = (Sistema)request.getSession().getAttribute("sistema");
 		if (sistema == null) {
 			sistema = new Sistema();
@@ -28,8 +30,10 @@ public class EfetuaLogout extends HttpServlet {
 		}
 
 		sistema.cLogin.logout();
+		*/
 		RequestDispatcher rdIndex = request.getRequestDispatcher("index.jsp");
 		rdIndex.forward(request, response);
+		
 	}
 }
 	

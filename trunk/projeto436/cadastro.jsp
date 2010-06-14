@@ -1,5 +1,5 @@
 <jsp:include page="logo.jsp"></jsp:include>
-<jsp:include page="barraHorizontalAutor.jsp"></jsp:include>
+<jsp:include page="barraHorizontal.jsp"></jsp:include>
   
 <form action="CadastroServlet" method="get">
 

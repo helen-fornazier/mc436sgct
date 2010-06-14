@@ -1,5 +1,19 @@
+<%@ page import="Control.Sistema" %>
 <jsp:include page="logo.jsp"></jsp:include>
+
+<% 
+Sistema sistema = (Sistema)request.getSession().getAttribute("sistema");
+if (sistema == null) {
+ %>
 <jsp:include page="barraHorizontal.jsp"></jsp:include>
+<%  
+}
+else {
+%>
+<jsp:include page="barraHorizontalAutor.jsp"></jsp:include>
+<%  
+}
+%>
 
 		<center>
 		     
@@ -16,6 +30,6 @@
           </span>
     	
     	</center>
-    	
+
 <jsp:include page="barraLateral.jsp"></jsp:include>
 <jsp:include page="rodape.jsp"></jsp:include>

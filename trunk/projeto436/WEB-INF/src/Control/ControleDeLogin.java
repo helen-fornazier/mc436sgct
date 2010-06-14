@@ -35,6 +35,21 @@ public class ControleDeLogin {
 		return this.usuarioLogado;
 	}
 	
+	/**retorna o tipo de usuário logado, retorna null quando nenhum logado,
+	 * ou não se enquadrar em nenhum tipo*/
+	public String getTipoUsuarioLogado() {
+		if (this.usuarioLogado == null)
+			return null;
+		String login = this.usuarioLogado.getLogin();
+		if(this.getAutor(login) != null)
+			return "autor";
+		if(this.getAvaliador(login) != null)
+			return "avaliador";
+		if(this.getUsuario(login) != null)
+			return "participante";
+		else
+			return null;
+	}
 	/**Retorna nulo se usuário não encontrado*/
 	public Usuario getUsuario(String login) {
 		//Carrega o Banco de dados
@@ -49,7 +64,11 @@ public class ControleDeLogin {
 		if (cpf == null)
 			return null;
 		
-		return database.getListaUsuario().get(database.searchUsuario(cpf));
+		int index = database.searchUsuario(cpf);
+		if (index >= 0)
+			return database.getListaUsuario().get(index);
+		else
+			return null;
 	}
 	
 	/**Retorna nulo se deu problema em criar o Usuário*/
@@ -86,7 +105,11 @@ public class ControleDeLogin {
 		if (cpf == null)
 			return null;
 		
-		return database.getListaAutor().get(database.searchAutor(cpf));
+		int index = database.searchAutor(cpf);
+		if (index >= 0)
+			return database.getListaAutor().get(index);
+		else
+			return null;
 	}
 	
 	/**Retorna nulo se deu problema em criar o Autor
@@ -117,7 +140,11 @@ public class ControleDeLogin {
 		if (cpf == null)
 			return null;
 		
-		return database.getListaAvaliador().get(database.searchAvaliador(cpf));
+		int index = database.searchAvaliador(cpf);
+		if (index >= 0)
+			return database.getListaAvaliador().get(index);
+		else
+			return null;
 	}
 	
 	/**Retorna nulo se deu problema em criar o Avaliador*/
