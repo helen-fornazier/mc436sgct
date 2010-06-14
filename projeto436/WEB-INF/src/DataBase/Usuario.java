@@ -60,6 +60,15 @@ public class Usuario implements Serializable {
 			
 	}
 	
+	/** Compara a senha data com a senha do usuário, retorna True se
+	 * são iguais*/
+	public boolean compareSenha(String senha){
+		if(this.senha.compareTo(senha) == 0)
+			return true;
+		else
+			return false;
+	}
+	
 	/* Retorna nome */
 	public String getNome(){
 		return this.nome;
