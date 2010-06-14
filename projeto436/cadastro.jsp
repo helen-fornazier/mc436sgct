@@ -21,15 +21,15 @@
 	
 	<table>
 		<tr>
-			<td>Nome:</td>
+			<td>Nome*:</td>
 			<td><input type="text" name="nomeUser" size="50"></td>
 		</tr>
 		<tr>
-			<td>Idade:</td>
+			<td>Idade*:</td>
 			<td><input type="text" name="idade" size="10"></td>
 		</tr>
 		<tr>
-			<td>Sexo:</td>
+			<td>Sexo*:</td>
 			<td>
 				<input type="radio" name="sexo" value="feminino"> Feminino<br>
 				<input type="radio" name="sexo" value="masculino"> Masculino<br>
@@ -74,6 +74,24 @@
 		<tr>
 			<td>Digite a senha novamente*:</td>
 			<td><input type="password" name="senha2" size="20"></td>
+		</tr>
+		
+		<tr>
+		</tr>
+	</table>
+	
+	<table>
+		<tr>
+			<td>Mande o seu currículo se você for um Autor ou Avaliador*:</td>
+		</tr>
+		<tr>
+			<td><input type="file" name="arquivo" size="50"></td>
+		</tr>
+		<tr>
+			<td>Digite suas qualificações se você for um Avaliador:</td>
+		</tr>
+		<tr>
+			<td><textarea name="resumo" rows="25" cols="70"></textarea></td>
 		</tr>
 	</table>
 	
