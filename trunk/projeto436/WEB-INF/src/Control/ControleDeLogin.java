@@ -55,18 +55,17 @@ public class ControleDeLogin {
 	/**Retorna nulo se deu problema em criar o Usuário*/
 	public Usuario criaUsuario(String login, String senha, String nome, String cpf,
 								String endereco, String contato, String idade, String sexo) {
+		
+		//Verifica se o usuário existe, se existir, retorne nulo
+		//FIXME: Verificar se o insert usuário não verifica isto já, se sim, esta verifecação abaixo é inútil
+		if (this.getUsuario(login) != null)
+			return null;		
 		//Carrega o Banco de dados
 		StorageDB storage = new StorageDB();
 		DataBase database = storage.loadDataBase(); 
 		if (database == null) {
 			database = new DataBase();
 		}
-		
-		//Verifica se o usuário existe, se existir, retorne nulo
-		//FIXME: Verificar se o insrt usuário não verifica isto já, se sim, esta verifecação abaixo é inútil
-		if (this.getUsuario(login) != null)
-			return null;
-		
 		if (!database.insertUsuario(login, senha, nome, cpf, endereco, contato, idade, sexo, "false"))
 			return null;
 		
@@ -94,15 +93,13 @@ public class ControleDeLogin {
 	 * OBS: não precisa criar instância de Usuário a parte, esta função já cria*/
 	public Autor criaAutor(String login, String senha, String nome, String cpf,
 			String endereco, String contato, String idade, String sexo, String CV) {
+		//Cria Usuário, se ele já existe a função não cria novamente
+		this.criaUsuario(login, senha, nome, cpf, endereco, contato, idade, sexo);
 		//Carrega o Banco de dados
 		StorageDB storage = new StorageDB();
 		DataBase database = storage.loadDataBase();
-		
-		//Cria Usuário, se ele já existe a função não cria novamente
-		this.criaUsuario(login, senha, nome, cpf, endereco, contato, idade, sexo);
 		if (database.insertAutor(cpf, CV) == false)
-			return null;
-		
+			return null;		
 		//Salva no banco de dados
 		storage.saveDataBase(database);
 		
@@ -126,12 +123,11 @@ public class ControleDeLogin {
 	/**Retorna nulo se deu problema em criar o Avaliador*/
 	public Avaliador criaAvaliador(String login, String senha, String nome, String cpf,
 			String endereco, String contato, String idade, String sexo, String CV, String qualificacoes) {
+		//Cria Usuário, se ele já existe a função não cria novamente
+		this.criaUsuario(login, senha, nome, cpf, endereco, contato, idade, sexo);
 		//Carrega o Banco de dados
 		StorageDB storage = new StorageDB();
 		DataBase database = storage.loadDataBase();
-		
-		//Cria Usuário, se ele já existe a função não cria novamente
-		this.criaUsuario(login, senha, nome, cpf, endereco, contato, idade, sexo);
 		if (database.insertAvaliador(cpf, qualificacoes, CV) == false)
 			return null;
 		
