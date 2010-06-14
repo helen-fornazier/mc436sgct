@@ -10,6 +10,7 @@ public class DataBase implements Serializable{
 	private LinkedList<Usuario>   listaUsuario;
 	private LinkedList<Autor>     listaAutor;
 	private LinkedList<Avaliador> listaAvaliador;
+	private LinkedList<Material> listaMaterial;
 	
 	private boolean status;
 	
@@ -268,17 +269,69 @@ public class DataBase implements Serializable{
 	}
 	
 	
+/*	
+	public boolean insertUsuario(String login, String senha, String nome, String CPF,
+			String endereco, String contato, String idade, String sexo,
+			String status){
+		
+		if( (this.searchUsuario(CPF) != -1) || (this.searchUsuarioLogin(login) != null) ) return false;
+		else{
+			Usuario newUsuario = new Usuario(login, senha, nome, CPF, endereco, contato, idade, sexo, status);
+			this.listaUsuario.add(newUsuario);
+			return true;
+		}
+	}
+	
+	public boolean removeAutor(int idUsuario){
+		
+		int index = this.searchAutor(idUsuario); //Procurando Avaliador no DB.
+		if(index < 0) return false; //Nao encontrou.
+		else{ //Encontrou.
+			this.listaAutor.remove(index);
+			return true;
+		}
+	}
+	
+	public int searchAutor(int idUsuario){
+		
+		if(idUsuario < 0) return -1; //IdUsuario errado
+		else{
+			//Verificando se eh autor
+			for (int i = 0; i < this.listaAutor.size(); i++) {
+				if(this.listaAutor.get(i).getIdUsuario() == idUsuario) return i; //Encontrou
+			}
+			return -1; //Nao encontrou
+		}
+	}
+	*/
+	
+	public int searchMaterial(String titulo){
+		int i;
+		for (i=0; i < listaMaterial.size(); i++){
+			if(listaMaterial.get(i).getTitulo().compareTo(titulo) == 0) return i;  
+		}
+		return -1;
+	}
+	
+	
+	public boolean insertMaterial(Material material){
+		if(searchMaterial(material.getPwdArquivo()) == -1) return false;
+		listaMaterial.add(material);
+		return true;
+	}
+	
+	public boolean removeMaterial(String titulo){
+		int i;
+		i = searchMaterial(titulo);
+		if (i == -1) return false;
+		if(listaMaterial.remove(i) == null) return false;
+		else return true;
+	}
 	
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	
