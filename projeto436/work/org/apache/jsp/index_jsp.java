@@ -3,6 +3,7 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import Control.Sistema;
 
 public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -39,10 +40,32 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out = pageContext.getOut();
       _jspx_out = out;
 
+      out.write('\r');
+      out.write('\n');
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "logo.jsp", out, false);
+      out.write("\r\n");
+      out.write("\r\n");
+ 
+Sistema sistema = (Sistema)request.getSession().getAttribute("sistema");
+if (sistema == null) {
+ 
       out.write('\r');
       out.write('\n');
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "barraHorizontal.jsp", out, false);
+      out.write('\r');
+      out.write('\n');
+  
+}
+else {
+
+      out.write('\r');
+      out.write('\n');
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "barraHorizontalAutor.jsp", out, false);
+      out.write('\r');
+      out.write('\n');
+  
+}
+
       out.write("\r\n");
       out.write("\r\n");
       out.write("\t\t<center>\r\n");
@@ -60,7 +83,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("          </span>\r\n");
       out.write("    \t\r\n");
       out.write("    \t</center>\r\n");
-      out.write("    \t\r\n");
+      out.write("\r\n");
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "barraLateral.jsp", out, false);
       out.write('\r');
       out.write('\n');

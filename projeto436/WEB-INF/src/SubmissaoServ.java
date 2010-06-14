@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Control.Sistema;
+
 
 /**
  * @author Paulo 
@@ -25,7 +27,17 @@ public class SubmissaoServ extends HttpServlet {
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		System.out.println("ENTROU NA SUBMISSAO!!!!!!");
+		//Verifica se é é um autor que entrou nesta página
+		Sistema sistema = (Sistema)request.getSession().getAttribute("sistema");
+		System.out.println(sistema.cLogin.getTipoUsuarioLogado());
+		if ( sistema == null || sistema.cLogin.getTipoUsuarioLogado().compareTo("autor") != 0){
+			RequestDispatcher rdIndex = request.getRequestDispatcher("acessoNaoPermitido.jsp");
+			rdIndex.forward(request, response);
+			return;
+		}
+		
+		
 		String autor1 = String.valueOf(request.getParameter("autor1"));
 		System.out.println("autor 1 = "+autor1);
 		String inst1 = String.valueOf(request.getParameter("inst1"));

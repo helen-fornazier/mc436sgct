@@ -3,6 +3,7 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import Control.Sistema;
 
 public final class barraHorizontalAutor_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -39,12 +40,13 @@ public final class barraHorizontalAutor_jsp extends org.apache.jasper.runtime.Ht
       out = pageContext.getOut();
       _jspx_out = out;
 
+      out.write("\t\r\n");
       out.write("\t<!-- end #logo -->\r\n");
       out.write("\t<div id=\"header\">\r\n");
       out.write("\t\t<div id=\"menu\">\r\n");
       out.write("\t\t\t<ul>\r\n");
       out.write("\t\t\t\t<li><a href=\"CarregaInicio\">Inicio</a></li>\r\n");
-      out.write("\t\t\t\t<li><a href=\"submissao.jsp\">Submissao</a></li>\r\n");
+      out.write("\t\t\t\t<li><a href=\"SubmissaoServ\">Submissao</a></li>\r\n");
       out.write("\t\t\t\t<li><a href=\"CarregaListaArtigos\">Avaliar</a></li>\r\n");
       out.write("\t\t\t</ul>\r\n");
       out.write("\t\t</div>\r\n");
@@ -52,7 +54,19 @@ public final class barraHorizontalAutor_jsp extends org.apache.jasper.runtime.Ht
       out.write("\t\t<div id=\"search\">\r\n");
       out.write("\t\t\t<div id=\"menu\">\r\n");
       out.write("\t\t\t\t<ul>\r\n");
-      out.write("\t\t\t\t\t<li><a href=\"EfetuaLogin\">Logout</a></li>\r\n");
+      out.write("\t\t\t\t\t");
+
+					Sistema sistema = (Sistema)request.getSession().getAttribute("sistema");
+					
+      out.write("\r\n");
+      out.write("\t\t\t\t\t<table>\r\n");
+      out.write("\t\t\t\t\t\r\n");
+      out.write("\t\t\t\t\t<td><li><a href=\"EfetuaLogout\">Logout</a></li></td>\r\n");
+      out.write("\t\t\t\t\t<td><font size=\"2\">logado como ");
+      out.print(sistema.cLogin.getUsuarioLogado().getLogin());
+      out.write(" </font></td>\r\n");
+      out.write("\t\t\t\t\t\r\n");
+      out.write("\t\t\t\t\t</table>\r\n");
       out.write("\t\t\t\t</ul>\r\n");
       out.write("\t\t\t</div>\r\n");
       out.write("\t\t</div>\r\n");

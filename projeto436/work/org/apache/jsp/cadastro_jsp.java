@@ -42,7 +42,7 @@ public final class cadastro_jsp extends org.apache.jasper.runtime.HttpJspBase
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "logo.jsp", out, false);
       out.write('\r');
       out.write('\n');
-      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "barraHorizontalAutor.jsp", out, false);
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "barraHorizontal.jsp", out, false);
       out.write("\r\n");
       out.write("  \r\n");
       out.write("<form action=\"CadastroServlet\" method=\"get\">\r\n");
@@ -137,13 +137,13 @@ public final class cadastro_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t<td>Mande o seu currículo se você for um Autor ou Avaliador*:</td>\r\n");
       out.write("\t\t</tr>\r\n");
       out.write("\t\t<tr>\r\n");
-      out.write("\t\t\t<td><input type=\"file\" name=\"arquivo\" size=\"50\"></td>\r\n");
+      out.write("\t\t\t<td><input type=\"file\" name=\"curriculo\" size=\"50\"></td>\r\n");
       out.write("\t\t</tr>\r\n");
       out.write("\t\t<tr>\r\n");
       out.write("\t\t\t<td>Digite suas qualificações se você for um Avaliador:</td>\r\n");
       out.write("\t\t</tr>\r\n");
       out.write("\t\t<tr>\r\n");
-      out.write("\t\t\t<td><textarea name=\"resumo\" rows=\"25\" cols=\"70\"></textarea></td>\r\n");
+      out.write("\t\t\t<td><textarea name=\"qualificacoes\" rows=\"25\" cols=\"70\"></textarea></td>\r\n");
       out.write("\t\t</tr>\r\n");
       out.write("\t</table>\r\n");
       out.write("\t\r\n");
