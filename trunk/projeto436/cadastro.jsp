@@ -85,13 +85,13 @@
 			<td>Mande o seu currículo se você for um Autor ou Avaliador*:</td>
 		</tr>
 		<tr>
-			<td><input type="file" name="arquivo" size="50"></td>
+			<td><input type="file" name="curriculo" size="50"></td>
 		</tr>
 		<tr>
 			<td>Digite suas qualificações se você for um Avaliador:</td>
 		</tr>
 		<tr>
-			<td><textarea name="resumo" rows="25" cols="70"></textarea></td>
+			<td><textarea name="qualificacoes" rows="25" cols="70"></textarea></td>
 		</tr>
 	</table>
 	

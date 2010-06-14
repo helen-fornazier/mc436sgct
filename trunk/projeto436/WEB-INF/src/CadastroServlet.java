@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import Control.Sistema;
 import DataBase.Usuario;
+import DataBase.Autor;
+import DataBase.Avaliador;
 
 public class CadastroServlet extends HttpServlet {
 
@@ -18,28 +20,32 @@ public class CadastroServlet extends HttpServlet {
 		this.doGet(request, response);
 	}
 	
-	private String _getAttributeProblems(String nome, String idade, String sexo, String cpf, String login,
-										String senha1, String senha2, String tipo) {
-		if (nome == "")
+	private String _getAttributeProblems(String login, String senha1, String senha2, String nome, String cpf, 
+			String endereco, String contato, String idade, String sexo, String tipo, String curriculo, String qualificacoes) {
+		
+		if (nome.compareTo("") == 0)
 			return "NOME EM BRANCO";
-		if (idade == "")
+		if (idade.compareTo("") == 0)
 			return "IDADE EM BRANCO";
 		if (sexo == null)
 			return "SEXO EM BRANCO";
-		if (cpf == "")
+		if (cpf.compareTo("") == 0)
 			return "CPF EM BRANCO";
-		else if (login == "")
+		else if (login.compareTo("") == 0)
 			return "LOGIN EM BRANCO";
-		else if (senha1 == "")
+		else if (senha1.compareTo("") == 0)
 			return "SENHA EM BRANCO";
-		else if (senha2 == "")
+		else if (senha2.compareTo("") == 0)
 			return "POR FAVOR, DIGITE NOVAMENTE A SENHA";
 		else if (senha1.compareTo(senha2) != 0) {
 			return "SENHAS NÃO COMPATÍVEIS, POR FAVOR, DIGITE NOVAMENTE";
 		}
 		else if (tipo == null)
 			return "VOCÊ DEVE ESCOLHER UM TIPO DE USUÁRIO";
-		
+		else if ((tipo.compareTo("autor") == 0 || tipo.compareTo("avaliador") == 0) && curriculo.compareTo("") == 0)
+			return "VOCÊ DEVE ADICIONAR SEU CURRÍCULO";
+		else if (tipo.compareTo("avaliador") == 0 && qualificacoes.compareTo("") == 0)
+			return "VOCE ESCREVER SUAS QUALIFICAÇÕES";
 		try {
 			Integer.parseInt(idade);
 		}
@@ -57,7 +63,7 @@ public class CadastroServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		System.out.println("ENTROU NO CADASTRO1");
+		System.out.println("ENTROU NO CADASTRO");
 		
 		//Le um atributo de session
 		String nome = request.getParameter("nomeUser");
@@ -70,8 +76,12 @@ public class CadastroServlet extends HttpServlet {
 		String login = request.getParameter("login");
 		String senha1 = request.getParameter("senha1");
 		String senha2 = request.getParameter("senha2");
+		String curriculo = request.getParameter("curriculo");
+		String qualificacoes = request.getParameter("qualificacoes");
 		
-		String attributeError = _getAttributeProblems(nome, idade, sexo, cpf, login, senha1, senha2, tipo);
+		//FIXME: Ver como faz upload (como receber o material e armazenar em disco
+		String attributeError = _getAttributeProblems(login, senha1, senha2, nome, cpf, endereco, contato,
+														idade, sexo, tipo, curriculo, qualificacoes);
 		request.getSession().setAttribute("attributeError", attributeError);
 
 		if (attributeError != null) {		//Se dados não obrigatório não estão lá, ou senhas diferentes:
@@ -86,16 +96,37 @@ public class CadastroServlet extends HttpServlet {
 			sistema = new Sistema();
 			request.getSession().setAttribute("sistema", sistema);
 		}
+
+		if (tipo.compareTo("participante") == 0) {
+			Usuario usuario = sistema.cLogin.criaUsuario(login, senha1, nome, cpf, endereco, contato, idade, sexo); 
+			if ( usuario != null) { //Se criou um usuário
+				sistema.cLogin.login(login, senha1);
+				RequestDispatcher rdIndex = request.getRequestDispatcher("index.jsp");
+				rdIndex.forward(request, response);
+				return;
+			}
+		}
+		else if (tipo.compareTo("autor") == 0) {
+			Autor autor = sistema.cLogin.criaAutor(login, senha1, nome, cpf, endereco, contato, idade, sexo, curriculo);
+			if ( autor != null) { //Se criou um usuário
+				sistema.cLogin.login(login, senha1);
+				RequestDispatcher rdIndex = request.getRequestDispatcher("index.jsp");
+				rdIndex.forward(request, response);
+				return;
+			}	
+		}
+		else if (tipo.compareTo("avaliador") == 0) {
+			Avaliador avaliador = sistema.cLogin.criaAvaliador(login, senha1, nome, cpf, endereco, contato, idade, sexo,
+															curriculo, qualificacoes); 
+			if ( avaliador != null) { //Se criou um usuário
+				sistema.cLogin.login(login, senha1);
+				RequestDispatcher rdIndex = request.getRequestDispatcher("index.jsp");
+				rdIndex.forward(request, response);
+				return;
+			}	
+		}
 		
-		Usuario usuario = sistema.cLogin.criaUsuario(login, senha1, nome, cpf, endereco, contato, idade, sexo); 
-		if ( usuario != null) { //Se criou um usuário
-			request.getSession().setAttribute("usuario", usuario);
-			RequestDispatcher rdIndex = request.getRequestDispatcher("index.jsp");
-			rdIndex.forward(request, response);
-		}
-		else {
-			RequestDispatcher rdIndex = request.getRequestDispatcher("loginErro.jsp");
-			rdIndex.forward(request, response);
-		}
+		RequestDispatcher rdIndex = request.getRequestDispatcher("loginErro.jsp");
+		rdIndex.forward(request, response);
 	}
 }
