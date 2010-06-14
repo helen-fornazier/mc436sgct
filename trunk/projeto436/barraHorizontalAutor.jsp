@@ -4,7 +4,7 @@
 		<div id="menu">
 			<ul>
 				<li><a href="CarregaInicio">Inicio</a></li>
-				<li><a href="SubmissaoServ">Submissao</a></li>
+				<li><a href="submissao.jsp">Submissao</a></li>
 				<li><a href="CarregaListaArtigos">Avaliar</a></li>
 			</ul>
 		</div>

@@ -3,6 +3,7 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import Control.Sistema;
 
 public final class submissao_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -44,7 +45,18 @@ public final class submissao_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write('\n');
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "barraHorizontalAutor.jsp", out, false);
       out.write("\r\n");
-      out.write("  \r\n");
+      out.write("\r\n");
+ 
+//Verifica se é é um autor que entrou nesta página
+		System.out.println("ENTROUOUOUOUOUO");
+		Sistema sistema = (Sistema)request.getSession().getAttribute("sistema");
+		if ( sistema == null || sistema.cLogin.getTipoUsuarioLogado().compareTo("autor") != 0){
+			RequestDispatcher rdIndex = request.getRequestDispatcher("acessoNaoPermitido.jsp");
+			rdIndex.forward(request, response);
+			return;
+		}
+ 
+      out.write("\r\n");
       out.write("<form action=\"SubmissaoServ\" method=\"get\">\r\n");
       out.write("\r\n");
       out.write("<!-- Um titulo centralizado na pagina-->\r\n");
