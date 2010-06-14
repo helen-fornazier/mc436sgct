@@ -41,6 +41,7 @@ public class EfetuaLogin extends HttpServlet {
 			rdIndex.forward(request, response);
 		}
 		else {
+			request.getSession().setAttribute("sistema", null);
 			RequestDispatcher rdIndex = request.getRequestDispatcher("loginErro.jsp");
 			rdIndex.forward(request, response);
 		}
