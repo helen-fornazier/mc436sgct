@@ -9,7 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import Control.Sistema;
 
-public class EfetuaLogout extends HttpServlet {
+/**
+ * @author Paulo 
+ *
+ * TODO To change the template for this generated type comment go to
+ * Window - Preferences - Java - Code Style - Code Templates
+ */
+public class LoginServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
@@ -20,20 +26,25 @@ public class EfetuaLogout extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		
-		request.getSession().setAttribute("sistema", null);
-		/*//Inicializa o sistema
+		//Inicializa o sistema
 		Sistema sistema = (Sistema)request.getSession().getAttribute("sistema");
 		if (sistema == null) {
 			sistema = new Sistema();
 			request.getSession().setAttribute("sistema", sistema);
 		}
 
-		sistema.cLogin.logout();
-		*/
-		RequestDispatcher rdIndex = request.getRequestDispatcher("index.jsp");
-		rdIndex.forward(request, response);
+		String login = (String)request.getParameter("usuario");
+		String senha = (String)request.getParameter("password");
 		
+		if(sistema.cLogin.login(login, senha) != null) {
+			RequestDispatcher rdIndex = request.getRequestDispatcher("index.jsp");
+			rdIndex.forward(request, response);
+		}
+		else {
+			request.getSession().setAttribute("sistema", null);
+			RequestDispatcher rdIndex = request.getRequestDispatcher("loginErro.jsp");
+			rdIndex.forward(request, response);
+		}
 	}
 }
 	

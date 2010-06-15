@@ -57,7 +57,7 @@ public final class barraHorizontal_jsp extends org.apache.jasper.runtime.HttpJsp
 		if (sistema == null || sistema.cLogin.getUsuarioLogado() == null) {
 		
       out.write("\r\n");
-      out.write("\t\t\t<form action=\"EfetuaLogin\" method=\"get\">\t\r\n");
+      out.write("\t\t\t<form action=\"LoginServlet\" method=\"get\">\t\r\n");
       out.write("\t\t\t\t<table>\r\n");
       out.write("\t\t\t\t\t<tr>\r\n");
       out.write("\t\t\t\t\t\t<td><font size=\"2\">usuario</font></td>\r\n");
@@ -81,7 +81,7 @@ public final class barraHorizontal_jsp extends org.apache.jasper.runtime.HttpJsp
 		else {
 		
       out.write("\r\n");
-      out.write("\t\t\t<form action=\"EfetuaLogout\" method=\"get\">\t\r\n");
+      out.write("\t\t\t<form action=\"LogoutServlet\" method=\"get\">\t\r\n");
       out.write("\t\t\t\t<table>\r\n");
       out.write("\t\t\t\t\t<tr>\r\n");
       out.write("\t\t\t\t\t\t<td><font size=\"2\">logado como ");

@@ -17,7 +17,7 @@ import Control.Sistema;
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
-public class SubmissaoServ extends HttpServlet {
+public class SubmissaoServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {

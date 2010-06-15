@@ -17,7 +17,7 @@
 					%>
 					<table>
 					
-					<td><li><a href="EfetuaLogout">Logout</a></li></td>
+					<td><li><a href="LogoutServlet">Logout</a></li></td>
 					<td><font size="2">logado como <%=sistema.cLogin.getUsuarioLogado().getLogin()%> </font></td>
 					
 					</table>

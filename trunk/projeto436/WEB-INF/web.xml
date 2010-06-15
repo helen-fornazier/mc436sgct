@@ -6,25 +6,25 @@
   </welcome-file-list>
   
     <servlet>
-      <servlet-name>EfetuaLogin</servlet-name>
-      <servlet-class>EfetuaLogin</servlet-class>
+      <servlet-name>LoginServlet</servlet-name>
+      <servlet-class>LoginServlet</servlet-class>
       <load-on-startup>1</load-on-startup>
   </servlet>
   
    <servlet-mapping>
-      <servlet-name>EfetuaLogin</servlet-name>
-      <url-pattern>/EfetuaLogin/*</url-pattern>
+      <servlet-name>LoginServlet</servlet-name>
+      <url-pattern>/LoginServlet/*</url-pattern>
    </servlet-mapping>
   
    <servlet>
-      <servlet-name>EfetuaLogout</servlet-name>
-      <servlet-class>EfetuaLogout</servlet-class>
+      <servlet-name>LogoutServlet</servlet-name>
+      <servlet-class>LogoutServlet</servlet-class>
       <load-on-startup>1</load-on-startup>
   </servlet>
   
    <servlet-mapping>
-      <servlet-name>EfetuaLogout</servlet-name>
-      <url-pattern>/EfetuaLogout/*</url-pattern>
+      <servlet-name>LogoutServlet</servlet-name>
+      <url-pattern>/LogoutServlet/*</url-pattern>
    </servlet-mapping>  
   
   <servlet>
@@ -78,14 +78,14 @@
 	</servlet-mapping> 
 
     <servlet>
-      <servlet-name>SubmissaoServ</servlet-name>
-      <servlet-class>SubmissaoServ</servlet-class>
+      <servlet-name>SubmissaoServlet</servlet-name>
+      <servlet-class>SubmissaoServlet</servlet-class>
       <load-on-startup>1</load-on-startup>
   </servlet>
   
    <servlet-mapping>
-      <servlet-name>SubmissaoServ</servlet-name>
-      <url-pattern>/SubmissaoServ/*</url-pattern>
+      <servlet-name>SubmissaoServlet</servlet-name>
+      <url-pattern>/SubmissaoServlet/*</url-pattern>
    </servlet-mapping>
    
    <servlet>

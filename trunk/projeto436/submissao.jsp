@@ -10,7 +10,7 @@
 			return;
 		}
  %>
-<form action="SubmissaoServ" method="get">
+<form action="SubmissaoServlet" method="get">
 
 <!-- Um titulo centralizado na pagina-->
   <p align="center"><font size="5"><b>Submissao de artigo</b></font></p>
