@@ -61,7 +61,7 @@ public final class barraHorizontalAutor_jsp extends org.apache.jasper.runtime.Ht
       out.write("\r\n");
       out.write("\t\t\t\t\t<table>\r\n");
       out.write("\t\t\t\t\t\r\n");
-      out.write("\t\t\t\t\t<td><li><a href=\"EfetuaLogout\">Logout</a></li></td>\r\n");
+      out.write("\t\t\t\t\t<td><li><a href=\"LogoutServlet\">Logout</a></li></td>\r\n");
       out.write("\t\t\t\t\t<td><font size=\"2\">logado como ");
       out.print(sistema.cLogin.getUsuarioLogado().getLogin());
       out.write(" </font></td>\r\n");

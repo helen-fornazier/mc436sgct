@@ -13,7 +13,7 @@
 		Sistema sistema = (Sistema)request.getSession().getAttribute("sistema"); 
 		if (sistema == null || sistema.cLogin.getUsuarioLogado() == null) {
 		%>
-			<form action="EfetuaLogin" method="get">	
+			<form action="LoginServlet" method="get">	
 				<table>
 					<tr>
 						<td><font size="2">usuario</font></td>
@@ -35,7 +35,7 @@
 		}
 		else {
 		%>
-			<form action="EfetuaLogout" method="get">	
+			<form action="LogoutServlet" method="get">	
 				<table>
 					<tr>
 						<td><font size="2">logado como <%=sistema.cLogin.getUsuarioLogado().getLogin()%> </font></td>

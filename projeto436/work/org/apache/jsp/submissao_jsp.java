@@ -48,7 +48,6 @@ public final class submissao_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
  
 //Verifica se é é um autor que entrou nesta página
-		System.out.println("ENTROUOUOUOUOUO");
 		Sistema sistema = (Sistema)request.getSession().getAttribute("sistema");
 		if ( sistema == null || sistema.cLogin.getTipoUsuarioLogado().compareTo("autor") != 0){
 			RequestDispatcher rdIndex = request.getRequestDispatcher("acessoNaoPermitido.jsp");
@@ -57,7 +56,7 @@ public final class submissao_jsp extends org.apache.jasper.runtime.HttpJspBase
 		}
  
       out.write("\r\n");
-      out.write("<form action=\"SubmissaoServ\" method=\"get\">\r\n");
+      out.write("<form action=\"SubmissaoServlet\" method=\"get\">\r\n");
       out.write("\r\n");
       out.write("<!-- Um titulo centralizado na pagina-->\r\n");
       out.write("  <p align=\"center\"><font size=\"5\"><b>Submissao de artigo</b></font></p>\r\n");
