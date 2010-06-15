@@ -23,7 +23,7 @@ Released   : 20090122
 
 <div id="header-wrapper">
 	<div id="logo">
-		<h1><a href="CarregaInicio">SGCT</a></h1>
+		<h1><a href="index.jsp">SGCT</a></h1>
 		<p><em>Sistema de Gerenciamento de Conferencias Tecnologicas</em></p>
 	</div>
 	<hr />

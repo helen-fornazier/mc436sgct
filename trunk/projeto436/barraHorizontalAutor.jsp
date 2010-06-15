@@ -3,7 +3,7 @@
 	<div id="header">
 		<div id="menu">
 			<ul>
-				<li><a href="CarregaInicio">Inicio</a></li>
+				<li><a href="index.jsp">Inicio</a></li>
 				<li><a href="submissao.jsp">Submissao</a></li>
 				<li><a href="listaArtigosAvaliacao.jsp">Avaliar</a></li>
 			</ul>

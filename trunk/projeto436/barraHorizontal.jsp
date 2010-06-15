@@ -4,7 +4,7 @@
 <div id="header">
 	<div id="menu">
 		<ul>
-			<li><a href="CarregaInicio">Inicio</a></li>
+			<li><a href="index.jsp">Inicio</a></li>
 		</ul>
 	</div>
 	<!-- end #menu -->
