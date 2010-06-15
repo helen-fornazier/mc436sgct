@@ -8,26 +8,29 @@ import DataBase.StorageDB;
 
 public class ControleDeLogin {
 	private Usuario usuarioLogado;
-	
-	public ControleDeLogin(){
+	private Sistema sistema;
+	public ControleDeLogin(Sistema sistema){
 		this.usuarioLogado = null;
+		this.sistema = sistema;
 	}
 	
 	/**Seta o atributo privado usuarioLogado como o Usuario com o login
 	 * e senha passados como parâmetro e retorna o Usuario. Nulo se não
-	 * existir */
+	 * existir.
+	 * OBS: ja seta os usuarios logados dos sistemas de submissao e avaliacao */
 	public Usuario login(String login, String senha) {
 		Usuario usuario = this.getUsuario(login);
-		if (usuario == null || usuario.compareSenha(senha) == false)
+		if (usuario == null || usuario.compareSenha(senha) == false) {
 			this.usuarioLogado = null;
-		else
+			sistema.cAvaliacao.setAvaliadorLogado(null);
+			sistema.cSubmissao.setAutorLogado(null);
+		}
+		else {
 			this.usuarioLogado = usuario;
+			sistema.cAvaliacao.setAvaliadorLogado(this.getAvaliador(login));
+			sistema.cSubmissao.setAutorLogado(this.getAutor(login));
+		}
 		return this.usuarioLogado;
-	}
-	
-	/** Seta o usuarioLogado como null*/
-	public void logout() {
-		this.usuarioLogado = null;
 	}
 	
 	/**retorna true se tem um usuario logado*/
