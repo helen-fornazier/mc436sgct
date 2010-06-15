@@ -2,7 +2,7 @@
 <jsp:include page="barraHorizontalAutor.jsp"></jsp:include>
 <%@ page import="Control.Sistema" %>
 <%@ page import="DataBase.Material" %>
-
+<%@ page import="java.util.ArrayList" %>
 
 <% 
 //Verifica se é é um autor que entrou nesta página
