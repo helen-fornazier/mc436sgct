@@ -3,6 +3,8 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import DataBase.Material;
+import Control.Sistema;
 import java.util.ArrayList;
 
 public final class listaArtigosAvaliacao_jsp extends org.apache.jasper.runtime.HttpJspBase
@@ -47,6 +49,18 @@ public final class listaArtigosAvaliacao_jsp extends org.apache.jasper.runtime.H
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
+ 
+//Verifica se é é um autor que entrou nesta página
+		Sistema sistema = (Sistema)request.getSession().getAttribute("sistema");
+		if ( sistema == null || sistema.cLogin.getTipoUsuarioLogado().compareTo("avaliador") != 0){
+			RequestDispatcher rdIndex = request.getRequestDispatcher("acessoNaoPermitido.jsp");
+			rdIndex.forward(request, response);
+			return;
+		}
+ 
+      out.write("\r\n");
+      out.write(" \r\n");
+      out.write("\r\n");
       out.write("\r\n");
       out.write("\t\t");
       out.write("\r\n");
@@ -55,11 +69,13 @@ public final class listaArtigosAvaliacao_jsp extends org.apache.jasper.runtime.H
       out.write("\r\n");
       out.write("\t\t");
 
-		ArrayList arrayAvaliar = new ArrayList();
-		ArrayList arrayAvaliados = new ArrayList();
 		
-		arrayAvaliar = (ArrayList)request.getSession().getAttribute("arrayArtigosAvaliar");
-		arrayAvaliados = (ArrayList)request.getSession().getAttribute("arrayArtigosAvaliados");
+		ArrayList<Material> materiaisAvaliar = sistema.cAvaliacao.getListaMateriaisAvaliar();
+		if (materiaisAvaliar == null)
+			materiaisAvaliar = new ArrayList<Material>();
+		ArrayList<Material> materiaisAvaliados =  sistema.cAvaliacao.getListaMateriaisAvaliados();
+		if (materiaisAvaliados == null)
+			materiaisAvaliados = new ArrayList<Material>();
 		
       out.write("\r\n");
       out.write("\t\t\r\n");
@@ -68,15 +84,15 @@ public final class listaArtigosAvaliacao_jsp extends org.apache.jasper.runtime.H
       out.write("\t\tEstes sao os artigos para a avaliacao: <br> <br>\r\n");
       out.write("\t\t\r\n");
       out.write("\t\t");
- for(int i=0; i<arrayAvaliar.size(); i++){
+ for(int i=0; i<materiaisAvaliar.size(); i++){
       out.write("\r\n");
-      out.write("\t\t\t<a href='AvaliaArtigo?artigo=");
+      out.write("\t\t\t<a href='avaliacao.jsp?artigo=");
       out.print(i);
       out.write("'>Artigo ");
       out.print(i);
       out.write(':');
       out.write(' ');
-      out.print(arrayAvaliar.get(i));
+      out.print(materiaisAvaliar.get(i).getTitulo());
       out.write("</a> <br> <br>\r\n");
       out.write("\t\t");
 } 
@@ -91,7 +107,7 @@ public final class listaArtigosAvaliacao_jsp extends org.apache.jasper.runtime.H
       out.write("\t\tEstes sao os artigos que ja foram avaliados: <br> <br>\r\n");
       out.write("\t\t\r\n");
       out.write("\t\t");
- for(int i=0; i<arrayAvaliados.size(); i++){
+ for(int i=0; i<materiaisAvaliados.size(); i++){
       out.write("\r\n");
       out.write("\t\t\t<a href='ConsultaArtigoAvaliado?artigo=");
       out.print(i);
@@ -99,7 +115,7 @@ public final class listaArtigosAvaliacao_jsp extends org.apache.jasper.runtime.H
       out.print(i);
       out.write(':');
       out.write(' ');
-      out.print(arrayAvaliados.get(i));
+      out.print(materiaisAvaliados.get(i));
       out.write(" </a><br> <br>\r\n");
       out.write("\t\t");
 } 

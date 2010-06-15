@@ -1,6 +1,9 @@
 <jsp:include page="logo.jsp"></jsp:include>
 <jsp:include page="barraHorizontalAutor.jsp"></jsp:include>
 <%@ page import="Control.Sistema" %>
+<%@ page import="DataBase.Material" %>
+
+
 <% 
 //Verifica se é é um autor que entrou nesta página
 		Sistema sistema = (Sistema)request.getSession().getAttribute("sistema");
@@ -20,14 +23,16 @@
 
 
 <%
-
-String tituloArtigo = String.valueOf(request.getSession().getAttribute("titulo"));
-
+ArrayList<Material> materiaisAvaliar = sistema.cAvaliacao.getListaMateriaisAvaliar();
+		if (materiaisAvaliar == null)
+			materiaisAvaliar = new ArrayList<Material>();
+int index = Integer.parseInt(request.getParameter("artigo"));
+Material material = materiaisAvaliar.get(index);
 %>
 
 <tr>
 <td>Titulo do artigo:</td>
-<td><%=tituloArtigo %></td>
+<td><%=material.getTitulo() %></td>
 <td></td>
 <td></td>
 <td></td>

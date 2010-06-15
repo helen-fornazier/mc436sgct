@@ -4,6 +4,8 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import Control.Sistema;
+import DataBase.Material;
+import java.util.ArrayList;
 
 public final class avaliacao_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -46,6 +48,9 @@ public final class avaliacao_jsp extends org.apache.jasper.runtime.HttpJspBase
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "barraHorizontalAutor.jsp", out, false);
       out.write("\r\n");
       out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
  
 //Verifica se é é um autor que entrou nesta página
 		Sistema sistema = (Sistema)request.getSession().getAttribute("sistema");
@@ -66,16 +71,18 @@ public final class avaliacao_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\r\n");
 
-
-String tituloArtigo = String.valueOf(request.getSession().getAttribute("titulo"));
-
+ArrayList<Material> materiaisAvaliar = sistema.cAvaliacao.getListaMateriaisAvaliar();
+		if (materiaisAvaliar == null)
+			materiaisAvaliar = new ArrayList<Material>();
+int index = Integer.parseInt(request.getParameter("artigo"));
+Material material = materiaisAvaliar.get(index);
 
       out.write("\r\n");
       out.write("\r\n");
       out.write("<tr>\r\n");
       out.write("<td>Titulo do artigo:</td>\r\n");
       out.write("<td>");
-      out.print(tituloArtigo );
+      out.print(material.getTitulo() );
       out.write("</td>\r\n");
       out.write("<td></td>\r\n");
       out.write("<td></td>\r\n");

@@ -47,7 +47,7 @@ public final class barraHorizontalAutor_jsp extends org.apache.jasper.runtime.Ht
       out.write("\t\t\t<ul>\r\n");
       out.write("\t\t\t\t<li><a href=\"CarregaInicio\">Inicio</a></li>\r\n");
       out.write("\t\t\t\t<li><a href=\"submissao.jsp\">Submissao</a></li>\r\n");
-      out.write("\t\t\t\t<li><a href=\"CarregaListaArtigos\">Avaliar</a></li>\r\n");
+      out.write("\t\t\t\t<li><a href=\"listaArtigosAvaliacao.jsp\">Avaliar</a></li>\r\n");
       out.write("\t\t\t</ul>\r\n");
       out.write("\t\t</div>\r\n");
       out.write("\t\t<!-- end #menu -->\r\n");
