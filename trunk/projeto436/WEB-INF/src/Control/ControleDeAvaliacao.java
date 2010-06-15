@@ -12,6 +12,7 @@ public class ControleDeAvaliacao {
 		this.avaliadorLogado = null;
 	}
 	
+	/**Chamado quando o login ocorre em ControleDeLogin*/
 	public void setAvaliadorLogado(Avaliador avaliadorLogado) {
 		this.avaliadorLogado = avaliadorLogado;
 	}

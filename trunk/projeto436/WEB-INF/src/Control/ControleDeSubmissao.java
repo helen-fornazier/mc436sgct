@@ -16,6 +16,7 @@ public class ControleDeSubmissao {
 		return material;		
 	}
 	
+	/**Chamado quando o login ocorre em ControleDeLogin*/
 	public void setAutorLogado(Autor autorLogado) {
 		this.autorLogado = autorLogado;
 	}

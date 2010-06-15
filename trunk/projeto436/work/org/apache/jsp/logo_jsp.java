@@ -64,7 +64,7 @@ public final class logo_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("<div id=\"header-wrapper\">\r\n");
       out.write("\t<div id=\"logo\">\r\n");
-      out.write("\t\t<h1><a href=\"CarregaInicio\">SGCT</a></h1>\r\n");
+      out.write("\t\t<h1><a href=\"index.jsp\">SGCT</a></h1>\r\n");
       out.write("\t\t<p><em>Sistema de Gerenciamento de Conferencias Tecnologicas</em></p>\r\n");
       out.write("\t</div>\r\n");
       out.write("\t<hr />\r\n");
