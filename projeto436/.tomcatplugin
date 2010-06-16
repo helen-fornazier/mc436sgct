@@ -7,9 +7,5 @@
     <updateXml>true</updateXml>
     <warLocation></warLocation>
     <extraInfo></extraInfo>
-<<<<<<< .mine
-    <webPath>/projeto436-dev</webPath>
-=======
-    <webPath>/lab436</webPath>
->>>>>>> .r20
+    <webPath>/projeto436</webPath>
 </tomcatProjectProperties>
