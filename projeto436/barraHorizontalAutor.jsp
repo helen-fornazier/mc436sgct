@@ -3,9 +3,9 @@
 	<div id="header">
 		<div id="menu">
 			<ul>
-				<li><a href="index.jsp">Inicio</a></li>
+				<li><a href="PaginaInicial">Inicio</a></li>
+				<li><a href="infoEvento.jsp">Informaoes do Evento</a></li>
 				<li><a href="submissao.jsp">Submissao</a></li>
-				<li><a href="listaArtigosAvaliacao.jsp">Avaliar</a></li>
 			</ul>
 		</div>
 		<!-- end #menu -->
@@ -17,8 +17,8 @@
 					%>
 					<table>
 					
+					<td><font size="2">Bem vindo <%=sistema.cLogin.getUsuarioLogado().getLogin()%>!</font></td>
 					<td><li><a href="LogoutServlet">Logout</a></li></td>
-					<td><font size="2">logado como <%=sistema.cLogin.getUsuarioLogado().getLogin()%> </font></td>
 					
 					</table>
 				</ul>

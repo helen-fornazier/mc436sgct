@@ -1,5 +1,4 @@
 package Control;
-
 import DataBase.Autor;
 import DataBase.Avaliador;
 import DataBase.Usuario;
