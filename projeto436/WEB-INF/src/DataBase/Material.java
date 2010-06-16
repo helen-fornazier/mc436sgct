@@ -36,6 +36,18 @@ public class Material implements Serializable {
 		return this.idUsuario;
 	}
 	
+	public float getNotaAvaliador(int avaliador){
+		for(int i=0;i<this.avaliadores.size();i++)
+			if(avaliador == this.avaliadores.get(i)){
+				try{
+					return this.notas.get(i);
+				}catch(IndexOutOfBoundsException e){
+					return -1;
+				}
+			}
+		return -2;
+	}
+	
 	/* Retorna autores */
 	public String getAutores(){
 		return this.autores;
@@ -73,8 +85,9 @@ public class Material implements Serializable {
 	}
 	
 	/* Retorna lista de avaliadores */
-	public Integer[] getAvaliadores(){
-		return (Integer[]) this.avaliadores.toArray(new Integer[this.avaliadores.size()]);
+	public ArrayList getAvaliadores(){
+		//return (Integer[]) this.avaliadores.toArray(new Integer[this.avaliadores.size()]);
+		return this.avaliadores;
 	}
 	
 	/* Retorna comentarios */

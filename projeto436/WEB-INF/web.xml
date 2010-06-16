@@ -26,28 +26,6 @@
       <servlet-name>LogoutServlet</servlet-name>
       <url-pattern>/LogoutServlet/*</url-pattern>
    </servlet-mapping>  
-  
-  <servlet>
-      <servlet-name>CarregaListaArtigos</servlet-name>
-      <servlet-class>CarregaListaArtigos</servlet-class>
-      <load-on-startup>1</load-on-startup>
-  </servlet>
-  
-   <servlet-mapping>
-      <servlet-name>CarregaListaArtigos</servlet-name>
-      <url-pattern>/CarregaListaArtigos/*</url-pattern>
-   </servlet-mapping>
-   
-     <servlet>
-      <servlet-name>AvaliaArtigo</servlet-name>
-      <servlet-class>AvaliaArtigo</servlet-class>
-      <load-on-startup>1</load-on-startup>
-  </servlet>
-  
-   <servlet-mapping>
-      <servlet-name>AvaliaArtigo</servlet-name>
-      <url-pattern>/AvaliaArtigo/*</url-pattern>
-   </servlet-mapping>
    
         <servlet>
       <servlet-name>ConsultaArtigoAvaliado</servlet-name>
