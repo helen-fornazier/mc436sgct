@@ -29,8 +29,9 @@ public class CadastroServlet extends HttpServlet {
 			return "SEXO EM BRANCO";
 		if (cpf.compareTo("") == 0)
 			return "CPF EM BRANCO";
-		if (database.searchUsuario(cpf) != -1)
-			return "CPF JA CADASTRADO";
+		if(database != null)
+			if (database.searchUsuario(cpf) != -1)
+				return "CPF JA CADASTRADO";
 		if (login.compareTo("") == 0)
 			return "LOGIN EM BRANCO";
 		if (sistema.cLogin.getUsuario(login) != null)

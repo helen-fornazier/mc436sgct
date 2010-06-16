@@ -305,14 +305,25 @@ public class DataBase implements Serializable{
 	}
 	*/
 	
-	public int searchMaterial(String titulo){
+	//busca todos os materiais relacionados com um avaliador
+	public ArrayList searchMaterial(Avaliador avaliador){
 		int i;
-		for (i=0; i < listaMaterial.size(); i++){
-			if(listaMaterial.get(i).getTitulo().compareTo(titulo) == 0) return i;  
-		}
-		return -1;
+		ArrayList<Material> materiais = new ArrayList<Material>();
+		if(listaMaterial != null)
+			for (i=0; i < listaMaterial.size(); i++){
+				if(listaMaterial.get(i).getAvaliadores().contains(avaliador.getIdUsuario())) materiais.add(listaMaterial.get(i));  
+			}
+		return materiais;
 	}
 	
+	public int searchMaterial(String titulo){
+		int i;
+		if(listaMaterial != null)
+			for (i=0; i < listaMaterial.size(); i++){
+				if(listaMaterial.get(i).getTitulo().compareTo(titulo) == 0) return i;  
+			}
+		return -1;
+	}
 	
 	public boolean insertMaterial(Material material){
 		if(searchMaterial(material.getPwdArquivo()) == -1) return false;
