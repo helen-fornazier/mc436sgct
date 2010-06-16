@@ -1,18 +1,13 @@
-<%@ page import="Control.Sistema" %>
-	
 <!-- end #logo -->
 <div id="header">
 	<div id="menu">
 		<ul>
-			<li><a href="index.jsp">Inicio</a></li>
+			<li><a href="PaginaInicial">Inicio</a></li>
+			<li><a href="infoEvento.jsp">Informaoes do Evento</a></li>
 		</ul>
 	</div>
 	<!-- end #menu -->
 	<div id="search">
-		<%
-		Sistema sistema = (Sistema)request.getSession().getAttribute("sistema"); 
-		if (sistema == null || sistema.cLogin.getUsuarioLogado() == null) {
-		%>
 			<form action="LoginServlet" method="get">	
 				<table>
 					<tr>
@@ -31,19 +26,6 @@
 					</tr>
 				</table>
 			</form>
-		<%
-		}
-		else {
-		%>
-			<form action="LogoutServlet" method="get">	
-				<table>
-					<tr>
-						<td><font size="2">logado como <%=sistema.cLogin.getUsuarioLogado().getLogin()%> </font></td>
-						<td><input type="submit" value="      Sair      " name="botaoLogout"></td>
-					</tr>
-				</table>
-			</form>
-		<% } %>	
 	</div>
 	<!-- end #search -->
 </div>

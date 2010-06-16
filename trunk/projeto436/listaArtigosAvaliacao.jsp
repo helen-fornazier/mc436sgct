@@ -1,5 +1,5 @@
 <jsp:include page="logo.jsp"></jsp:include>
-<jsp:include page="barraHorizontalAutor.jsp"></jsp:include>
+<jsp:include page="barraHorizontalAvaliador.jsp"></jsp:include>
 <%@ page import="DataBase.Material" %>
 <%@ page import="Control.Sistema" %>
 <% 

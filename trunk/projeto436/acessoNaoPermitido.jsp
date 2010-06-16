@@ -10,7 +10,7 @@
 			Sistema sistema = (Sistema)request.getSession().getAttribute("sistema");
  			%>
           <span style="font-size: 8,5pt">Acesso não permitido para o seu tipo de usuário como <b><%=sistema.cLogin.getTipoUsuarioLogado()%></b>, voltar para sua 
-          <a href="index.jsp">Página Inicial</a>
+          <a href="PaginaInicial">Página Inicial</a>
           </span>
     	
     	</center>

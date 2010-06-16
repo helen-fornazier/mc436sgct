@@ -1,7 +1,4 @@
-
-
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,13 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import Control.Sistema;
 
-
-/**
- * @author Paulo 
- *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
- */
 public class SubmissaoServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
