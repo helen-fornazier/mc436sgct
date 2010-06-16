@@ -10,6 +10,10 @@
    		  </span>
 		
 		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		AUTORRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
 		
           <span style="font-size: 8,5pt">Para realizar a inscricao na <b>Conferencia MC436 2010</b>, acesse sua
           <a href="areaReservada.jsp">Area reservada</a>
