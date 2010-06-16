@@ -5,9 +5,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import Control.Sistema;
-import DataBase.Usuario;
-import DataBase.Autor;
-import DataBase.Avaliador;
+import DataBase.*;
 
 public class CadastroServlet extends HttpServlet {
 
@@ -20,6 +18,9 @@ public class CadastroServlet extends HttpServlet {
 	private String _getAttributeProblems(Sistema sistema, String login, String senha1, String senha2, String nome, String cpf, 
 			String endereco, String contato, String idade, String sexo, String tipo, String curriculo, String qualificacoes) {
 		
+		StorageDB storage = new StorageDB();
+		DataBase database = storage.loadDataBase();
+		
 		if (nome.compareTo("") == 0)
 			return "NOME EM BRANCO";
 		if (idade.compareTo("") == 0)
@@ -28,6 +29,8 @@ public class CadastroServlet extends HttpServlet {
 			return "SEXO EM BRANCO";
 		if (cpf.compareTo("") == 0)
 			return "CPF EM BRANCO";
+		if (database.searchUsuario(cpf) != -1)
+			return "CPF JA CADASTRADO";
 		if (login.compareTo("") == 0)
 			return "LOGIN EM BRANCO";
 		if (sistema.cLogin.getUsuario(login) != null)
