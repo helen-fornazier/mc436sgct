@@ -11,7 +11,7 @@ public class Material implements Serializable {
 	private String titulo;
 	private String pwdArquivo;
 	private ArrayList<Integer> avaliadores;
-	private ArrayList<Float> notas;
+	private ArrayList<Integer> notas;
 	private ArrayList<String> comentarios;
 	private boolean avaliado;
 	
@@ -24,9 +24,7 @@ public class Material implements Serializable {
 		this.resumo = resumo;
 		this.titulo = titulo;
 		this.pwdArquivo = pwdArquivo;
-		this.notas = new ArrayList<Float>();
 		this.comentarios = new ArrayList<String>();
-		this.avaliadores = new ArrayList<Integer>();
 		
 		this.avaliado = false;		
 	}
@@ -36,16 +34,16 @@ public class Material implements Serializable {
 		return this.idUsuario;
 	}
 	
-	public float getNotaAvaliador(int avaliador){
+	public Integer getNotaAvaliador(int avaliador){
 		for(int i=0;i<this.avaliadores.size();i++)
-			if(avaliador == this.avaliadores.get(i)){
+			if(this.avaliadores.get(i).compareTo(new Integer(avaliador)) == 0){
 				try{
 					return this.notas.get(i);
 				}catch(IndexOutOfBoundsException e){
-					return -1;
+					return new Integer(-1);
 				}
 			}
-		return -2;
+		return new Integer(-2);
 	}
 	
 	/* Retorna autores */
@@ -79,13 +77,13 @@ public class Material implements Serializable {
 		return (media / this.notas.size());
 	}
 	
-	/* Retorna lista de notas */
-	public Float[] getNotas(){
-		return (Float[]) this.notas.toArray(new Float[this.notas.size()]);
-	}
+//	/* Retorna lista de notas */
+//	public Float[] getNotas(){
+//		return (Float[]) this.notas.toArray(new Float[this.notas.size()]);
+//	}
 	
 	/* Retorna lista de avaliadores */
-	public ArrayList getAvaliadores(){
+	public ArrayList<Integer> getAvaliadores(){
 		//return (Integer[]) this.avaliadores.toArray(new Integer[this.avaliadores.size()]);
 		return this.avaliadores;
 	}
@@ -124,6 +122,14 @@ public class Material implements Serializable {
 		this.titulo = newTitulo;
 	}
 	
+	/* Seta avaliadores */
+	public void setAvaliadores(ArrayList<Integer> avaliadores){
+		this.avaliadores = avaliadores;
+		this.notas = new ArrayList<Integer>();
+		for(int i=0;i<avaliadores.size();i++)
+			notas.add(new Integer(-1));
+	}
+	
 	/* Seta pwd Arquivo */
 	public void setPwdArquivo(String newPwdArquivo){
 		this.pwdArquivo = newPwdArquivo;
@@ -134,12 +140,11 @@ public class Material implements Serializable {
 	 *     dada por um avaliador. 
 	 * 
 	 */
-	public void avaliarMaterial(int idAvaliador, float nota, String comentario){
+	public void avaliarMaterial(int idAvaliador, int nota, String comentario){
 		
 		//Avaliado
 		if(! this.avaliado) this.changeAvaliado();
 		
-		this.avaliadores.add(idAvaliador);
 		this.notas.add(nota);
 		this.comentarios.add(comentario);
 	}
@@ -147,7 +152,7 @@ public class Material implements Serializable {
 	/* Mudar nota de um avaliador 
 	 *   Se o avaliador indicado nao tiver avaliado -> false 
 	 */
-	public boolean changeNota(int idAvaliador, float newNota){
+	public boolean changeNota(int idAvaliador, int newNota){
 		
 		for (int i = 0; i < this.avaliadores.size(); i++) {
 			if(this.avaliadores.get(i) == idAvaliador){ //Encontrei avaliador

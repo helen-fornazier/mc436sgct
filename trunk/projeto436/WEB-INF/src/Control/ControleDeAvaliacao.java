@@ -22,15 +22,9 @@ public class ControleDeAvaliacao {
 	
 	/**Pega a lista de material para serem avaliados pelo avaliador logado*/
 	public ArrayList<Material> getListaMateriaisAvaliar() {
-		Material material = new Material(1, "autor1, autor2", "este eh um resumo", "As baleias africanas", "Caminho estranho");
-		ArrayList<Material> lista = new ArrayList<Material>();
-		lista.add(material);
-		return lista;
+		ArrayList<Material> materiaisAvaliar = new ArrayList<Material>();
 		
-		/*ArrayList<Material> materiaisAvaliar = new ArrayList<Material>();
-		
-		if(materiais == null)
-			this.getListaMateriaisAvaliador();
+		this.getListaMateriaisAvaliador();
 		
 		for(int i = 0;i < materiais.size();i++)
 			if(materiais.get(i).getNotaAvaliador(avaliadorLogado.getIdUsuario()) == -1)
@@ -39,7 +33,7 @@ public class ControleDeAvaliacao {
 		if(materiaisAvaliar.size() > 0)
 			return materiaisAvaliar;
 		else
-			return null;*/
+			return null;
 		
 	}
 	
@@ -47,8 +41,7 @@ public class ControleDeAvaliacao {
 	public ArrayList getListaMateriaisAvaliados() {
 		ArrayList<Material> materiaisAvaliados = new ArrayList<Material>();
 		
-		if(materiais == null)
-			this.getListaMateriaisAvaliador();
+		this.getListaMateriaisAvaliador();
 		
 		for(int i = 0;i < materiais.size();i++)
 			if(materiais.get(i).getNotaAvaliador(avaliadorLogado.getIdUsuario()) > -1)
@@ -71,4 +64,6 @@ public class ControleDeAvaliacao {
 		
 		materiais = database.searchMaterial(this.avaliadorLogado);
 	}
+	
+	
 }

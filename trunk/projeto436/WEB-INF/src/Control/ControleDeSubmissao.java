@@ -11,7 +11,7 @@ public class ControleDeSubmissao {
 		this.autorLogado = null;
 	}
 	
-	private Material novoMaterial(String autores, String resumo, String titulo, String pwdArquivo){
+	public Material novoMaterial(String autores, String resumo, String titulo, String pwdArquivo){
 		Material material = new Material(autorLogado.getIdUsuario(), autores, resumo, titulo, pwdArquivo);
 		return material;		
 	}
@@ -25,6 +25,8 @@ public class ControleDeSubmissao {
 		StorageDB storage = new StorageDB();
 		DataBase database = storage.loadDataBase(); 
 		
+		material.setAvaliadores(database.getRndAvaliadores());
+
 		boolean x = database.insertMaterial(material);
 		
 		storage.saveDataBase(database);
