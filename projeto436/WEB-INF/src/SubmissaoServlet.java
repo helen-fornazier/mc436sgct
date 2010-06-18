@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Control.Sistema;
+import DataBase.Material;
 
 public class SubmissaoServlet extends HttpServlet {
 
@@ -18,33 +19,27 @@ public class SubmissaoServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String autor1 = String.valueOf(request.getParameter("autor1"));
-		System.out.println("autor 1 = "+autor1);
-		String inst1 = String.valueOf(request.getParameter("inst1"));
-		System.out.println("instituto 1 = "+inst1);
+		Sistema sistema = (Sistema)request.getSession().getAttribute("sistema");
+		if(sistema == null) {
+			sistema = new Sistema();
+			request.getSession().setAttribute("sistema", sistema);
+		}
 		
-		String autor2 = String.valueOf(request.getParameter("autor2"));
-		System.out.println("autor 2 = "+autor2);
-		String inst2 = String.valueOf(request.getParameter("inst2"));
-		System.out.println("instituto 2 = "+inst2);
-		
-		String autor3 = String.valueOf(request.getParameter("autor3"));
-		System.out.println("autor 3 = "+autor3);
-		String inst3 = String.valueOf(request.getParameter("inst3"));
-		System.out.println("instituto 3 = "+inst3);
-		
+		String autores = String.valueOf(request.getParameter("autores"));
+		System.out.println("autores = "+autores);
+
 		String titulo = String.valueOf(request.getParameter("titulo"));
 		System.out.println("titulo = "+titulo);
 		
 		String resumo = String.valueOf(request.getParameter("resumo"));
 		System.out.println("resumo = "+resumo);
 		
-		String ES = String.valueOf(request.getParameter("ES"));
-		System.out.println("ES = "+ES);
-		String IA = String.valueOf(request.getParameter("IA"));
-		System.out.println("IA = "+IA);
-		String Redes = String.valueOf(request.getParameter("Redes"));
-		System.out.println("Redes = "+Redes);
+		String arquivo = String.valueOf(request.getParameter("arquivo"));
+		System.out.println("arquivo = "+resumo);
+		
+		Material material = sistema.cSubmissao.novoMaterial(autores, resumo, titulo, arquivo);
+		
+		sistema.cSubmissao.registrarMaterial(material);
 		
 		RequestDispatcher rdIndex = request.getRequestDispatcher("submissaoSucesso.jsp");
 		rdIndex.forward(request, response);

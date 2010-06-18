@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 public class DataBase implements Serializable{
 
@@ -11,6 +12,7 @@ public class DataBase implements Serializable{
 	private LinkedList<Autor>     listaAutor;
 	private LinkedList<Avaliador> listaAvaliador;
 	private LinkedList<Material> listaMaterial;
+	private Random rand;
 	
 	private boolean status;
 	
@@ -19,7 +21,9 @@ public class DataBase implements Serializable{
 		this.listaAutor = new LinkedList<Autor>();
 		this.listaAvaliador = new LinkedList<Avaliador>();
 		this.listaUsuario = new LinkedList<Usuario>();
+		this.listaMaterial = new LinkedList<Material>();
 		this.status = true;
+		this.rand = new Random();
 	}
 	
 	/* Altera status do DataBase */
@@ -141,6 +145,27 @@ public class DataBase implements Serializable{
 			}
 			return -2; //Usuario nao eh avaliador
 		}
+	}
+	
+	/* Busca um Avaliador no DataBase pelo CPF -> retorna o indice na lista
+	 *   Se nao for Usuario -> -1
+	 *   Se for Usuario, mas nao Avaliador -> -2
+	 */
+	public ArrayList getRndAvaliadores(){
+		
+		ArrayList<Integer> avaliadores = new ArrayList<Integer>();
+		
+		Integer k; 
+		
+		k = new Integer(this.rand.nextInt(this.listaAvaliador.size()));
+		avaliadores.add(this.listaAvaliador.get(k).getIdUsuario());
+		k = new Integer(this.rand.nextInt(this.listaAvaliador.size()));
+		avaliadores.add(this.listaAvaliador.get(k).getIdUsuario());
+		k = new Integer(this.rand.nextInt(this.listaAvaliador.size()));
+		avaliadores.add(this.listaAvaliador.get(k).getIdUsuario());
+		
+		return avaliadores;
+
 	}
 	
 	/* Busca um Avaliador no DataBase pelo idUsuario -> retorna o indice na lista
@@ -307,12 +332,11 @@ public class DataBase implements Serializable{
 	
 	//busca todos os materiais relacionados com um avaliador
 	public ArrayList searchMaterial(Avaliador avaliador){
-		int i;
 		ArrayList<Material> materiais = new ArrayList<Material>();
 		if(listaMaterial != null)
-			for (i=0; i < listaMaterial.size(); i++){
-				if(listaMaterial.get(i).getAvaliadores().contains(avaliador.getIdUsuario())) materiais.add(listaMaterial.get(i));  
-			}
+			for (int i=0; i < listaMaterial.size(); i++)
+				for (int j=0; j < listaMaterial.get(i).getAvaliadores().size(); j++)
+					if(listaMaterial.get(i).getAvaliadores().get(j).compareTo(new Integer(avaliador.getIdUsuario())) == 0) materiais.add(listaMaterial.get(i));  
 		return materiais;
 	}
 	
