@@ -86,9 +86,6 @@ public class ControleDeAvaliacao {
 		
 		materiais = database.searchMaterial(this.avaliadorLogado);
 		System.out.println(materiais.size());
-		System.out.println(materiais.get(0).getTitulo());
-		System.out.println(materiais.get(1).getTitulo());
-		System.out.println(materiais.get(2).getTitulo());
 		materiaisAvaliar = new ArrayList<Material>();
 		materiaisAvaliados = new ArrayList<Material>();
 		
