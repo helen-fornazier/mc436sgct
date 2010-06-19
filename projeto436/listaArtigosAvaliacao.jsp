@@ -18,7 +18,7 @@
 		
 		<%--Resgata a variavel de sessao 'arrayArtigos' passada pelo 'CarregaListaArtigos'--%>
 		<%
-		
+		sistema.cAvaliacao.getListaMateriaisAvaliador();
 		ArrayList<Material> materiaisAvaliar = sistema.cAvaliacao.getListaMateriaisAvaliar();
 		if (materiaisAvaliar == null)
 			materiaisAvaliar = new ArrayList<Material>();
@@ -42,7 +42,7 @@
 		Estes sao os artigos que ja foram avaliados: <br> <br>
 		
 		<% for(int i=0; i<materiaisAvaliados.size(); i++){%>
-			<a href='ConsultaArtigoAvaliado?artigo=<%=i%>'>Artigo <%=i%>: <%=materiaisAvaliados.get(i)%> </a><br> <br>
+			<a href='ConsultaArtigoAvaliado?artigo=<%=i%>'>Artigo <%=i%>: <%=materiaisAvaliados.get(i).getTitulo()%> </a><br> <br>
 		<%} %>
 
 <jsp:include page="barraLateral.jsp"></jsp:include>

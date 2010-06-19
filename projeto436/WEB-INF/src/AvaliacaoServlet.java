@@ -4,11 +4,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 
 import Control.Sistema;
+import DataBase.Material;
 
 public class AvaliacaoServlet extends HttpServlet {
-
+	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
 
@@ -17,6 +19,25 @@ public class AvaliacaoServlet extends HttpServlet {
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		Sistema sistema = (Sistema)request.getSession().getAttribute("sistema");
+		if(sistema == null) {
+			sistema = new Sistema();
+			request.getSession().setAttribute("sistema", sistema);
+		}
+		
+		String comentarios = String.valueOf(request.getParameter("comentarios"));
+		System.out.println("comentarios = "+comentarios);
+
+		String nota = String.valueOf(request.getParameter("nota"));
+		System.out.println("nota = "+nota);
+		
+		ArrayList<Material> materiaisAvaliar = sistema.cAvaliacao.getListaMateriaisAvaliar();
+		int i = sistema.cAvaliacao.getMaterialAvaliar();
+		Material material = materiaisAvaliar.get(i);
+		
+		sistema.cAvaliacao.AvaliarMaterial(material, Integer.parseInt(nota), comentarios);
+
 		RequestDispatcher rdIndex = request.getRequestDispatcher("listaArtigosAvaliacao.jsp");
 		rdIndex.forward(request, response);
 	}	

@@ -333,6 +333,7 @@ public class DataBase implements Serializable{
 	//busca todos os materiais relacionados com um avaliador
 	public ArrayList searchMaterial(Avaliador avaliador){
 		ArrayList<Material> materiais = new ArrayList<Material>();
+		System.out.println("Tamanho da lista de materiais = " + listaMaterial.size());
 		if(listaMaterial != null)
 			for (int i=0; i < listaMaterial.size(); i++)
 				for (int j=0; j < listaMaterial.get(i).getAvaliadores().size(); j++)
@@ -350,8 +351,13 @@ public class DataBase implements Serializable{
 	}
 	
 	public boolean insertMaterial(Material material){
-		if(searchMaterial(material.getPwdArquivo()) == -1) return false;
-		listaMaterial.add(material);
+		int i = searchMaterial(material.getTitulo());
+		System.out.println("Tamanho da lista de materiais antes = " + listaMaterial.size());
+		if(i == -1)
+			listaMaterial.add(material);
+		else
+			listaMaterial.set(i, material);
+		System.out.println("Tamanho da lista de materiais depois = " + listaMaterial.size());
 		return true;
 	}
 	

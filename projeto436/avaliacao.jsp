@@ -27,6 +27,7 @@ ArrayList<Material> materiaisAvaliar = sistema.cAvaliacao.getListaMateriaisAvali
 		if (materiaisAvaliar == null)
 			materiaisAvaliar = new ArrayList<Material>();
 int index = Integer.parseInt(request.getParameter("artigo"));
+sistema.cAvaliacao.setMaterialAvaliar(index);
 Material material = materiaisAvaliar.get(index);
 %>
 
