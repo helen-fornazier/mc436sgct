@@ -64,7 +64,7 @@ public class Material implements Serializable {
 	public String getPwdArquivo(){
 		return this.pwdArquivo;
 	}
-	
+
 	/* Retorna nota media */
 	public float averageNota(){
 		
@@ -76,20 +76,19 @@ public class Material implements Serializable {
 		return (media / this.notas.size());
 	}
 	
-//	/* Retorna lista de notas */
-//	public Float[] getNotas(){
-//		return (Float[]) this.notas.toArray(new Float[this.notas.size()]);
-//	}
-	
 	/* Retorna lista de avaliadores */
 	public ArrayList<Integer> getAvaliadores(){
-		//return (Integer[]) this.avaliadores.toArray(new Integer[this.avaliadores.size()]);
 		return this.avaliadores;
 	}
 	
+	/* Retorna lista de notas */
+	public ArrayList<Integer> getNotas(){
+		return this.notas;
+	}
+	
 	/* Retorna comentarios */
-	public String[] getComentarios(){
-		return (String[]) this.comentarios.toArray(new String[this.comentarios.size()]);
+	public ArrayList<String> getComentarios(){
+		return this.comentarios;
 	}
 	
 	/* Retorna avaliado */
@@ -128,7 +127,7 @@ public class Material implements Serializable {
 		this.comentarios = new ArrayList<String>();
 		for(int i=0;i<avaliadores.size();i++){
 			notas.add(new Integer(-1));
-			comentarios.add(new String());
+			comentarios.add(new String(""));
 		}
 	}
 	
@@ -148,7 +147,7 @@ public class Material implements Serializable {
 		for(int i=0;i<avaliadores.size();i++)
 			if(avaliadores.get(i).compareTo(new Integer(idAvaliador)) == 0){
 				this.notas.set(i, new Integer(nota));
-				this.comentarios.set(i, new String(comentario));
+				this.comentarios.set(i, comentario);
 			}
 	}
 	
