@@ -24,7 +24,6 @@ public class Material implements Serializable {
 		this.resumo = resumo;
 		this.titulo = titulo;
 		this.pwdArquivo = pwdArquivo;
-		this.comentarios = new ArrayList<String>();
 		
 		this.avaliado = false;		
 	}
@@ -126,8 +125,11 @@ public class Material implements Serializable {
 	public void setAvaliadores(ArrayList<Integer> avaliadores){
 		this.avaliadores = avaliadores;
 		this.notas = new ArrayList<Integer>();
-		for(int i=0;i<avaliadores.size();i++)
+		this.comentarios = new ArrayList<String>();
+		for(int i=0;i<avaliadores.size();i++){
 			notas.add(new Integer(-1));
+			comentarios.add(new String());
+		}
 	}
 	
 	/* Seta pwd Arquivo */
@@ -143,10 +145,11 @@ public class Material implements Serializable {
 	public void avaliarMaterial(int idAvaliador, int nota, String comentario){
 		
 		//Avaliado
-		if(! this.avaliado) this.changeAvaliado();
-		
-		this.notas.add(nota);
-		this.comentarios.add(comentario);
+		for(int i=0;i<avaliadores.size();i++)
+			if(avaliadores.get(i).compareTo(new Integer(idAvaliador)) == 0){
+				this.notas.set(i, new Integer(nota));
+				this.comentarios.set(i, new String(comentario));
+			}
 	}
 	
 	/* Mudar nota de um avaliador 
