@@ -154,18 +154,19 @@ public class DataBase implements Serializable{
 	public ArrayList getRndAvaliadores(){
 		
 		ArrayList<Integer> avaliadores = new ArrayList<Integer>();
-		
 		Integer k; 
 		
-		k = new Integer(this.rand.nextInt(this.listaAvaliador.size()));
-		avaliadores.add(this.listaAvaliador.get(k).getIdUsuario());
-		k = new Integer(this.rand.nextInt(this.listaAvaliador.size()));
-		avaliadores.add(this.listaAvaliador.get(k).getIdUsuario());
-		k = new Integer(this.rand.nextInt(this.listaAvaliador.size()));
-		avaliadores.add(this.listaAvaliador.get(k).getIdUsuario());
-		
-		return avaliadores;
+		if(listaAvaliador.size() < 4)
+			for(int i = 0;i < listaAvaliador.size();i++)
+				avaliadores.add(this.listaAvaliador.get(i).getIdUsuario());
+		else
+			while(avaliadores.size() < 4){
+				k = new Integer(this.rand.nextInt(this.listaAvaliador.size()));
+				if(!avaliadores.contains(new Integer(this.listaAvaliador.get(k).getIdUsuario())))
+					avaliadores.add(this.listaAvaliador.get(k).getIdUsuario());
+			}
 
+		return avaliadores;
 	}
 	
 	/* Busca um Avaliador no DataBase pelo idUsuario -> retorna o indice na lista
