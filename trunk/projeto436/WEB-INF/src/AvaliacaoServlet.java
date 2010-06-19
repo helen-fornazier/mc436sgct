@@ -32,9 +32,17 @@ public class AvaliacaoServlet extends HttpServlet {
 		String nota = String.valueOf(request.getParameter("nota"));
 		System.out.println("nota = "+nota);
 		
-		ArrayList<Material> materiaisAvaliar = sistema.cAvaliacao.getListaMateriaisAvaliar();
 		int i = sistema.cAvaliacao.getMaterialAvaliar();
-		Material material = materiaisAvaliar.get(i);
+		int lista = sistema.cAvaliacao.getUsarLista();
+		ArrayList<Material> listaMateriais;
+		
+		if(lista == 0){
+			listaMateriais = sistema.cAvaliacao.getListaMateriaisAvaliar();
+		}else{
+			listaMateriais = sistema.cAvaliacao.getListaMateriaisAvaliados();
+		}
+			
+		Material material = listaMateriais.get(i);
 		
 		sistema.cAvaliacao.AvaliarMaterial(material, Integer.parseInt(nota), comentarios);
 

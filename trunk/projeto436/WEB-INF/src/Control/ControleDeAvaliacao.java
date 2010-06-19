@@ -12,6 +12,7 @@ public class ControleDeAvaliacao {
 	private ArrayList<Material> materiaisAvaliar;
 	private ArrayList<Material> materiaisAvaliados;
 	private int artigoAvaliar;
+	private int usarLista;
 
 	
 	public ControleDeAvaliacao(Sistema sistema){
@@ -55,6 +56,14 @@ public class ControleDeAvaliacao {
 	
 	public int getMaterialAvaliar(){
 		return artigoAvaliar;
+	}
+	
+	public void setUsarLista(int i){
+		usarLista = i;
+	}
+	
+	public int getUsarLista(){
+		return usarLista;
 	}
 	
 	/**Avalia um determinado material*/

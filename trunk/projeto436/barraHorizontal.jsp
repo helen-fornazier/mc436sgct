@@ -22,7 +22,7 @@
 						<td></td>
 						<td></td>
 						<td></td>
-						<td><a href="cadastro.jsp"<font color="white" size="2">     Cadastrar    </font></td></a>
+						<td><center><a href="cadastro.jsp"<font color="white" size="2">Cadastrar</font></a></center></td>
 					</tr>
 				</table>
 			</form>

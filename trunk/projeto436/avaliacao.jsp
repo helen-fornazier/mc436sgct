@@ -23,14 +23,20 @@
 
 
 <%
-ArrayList<Material> materiaisAvaliar = sistema.cAvaliacao.getListaMateriaisAvaliar();
-		if (materiaisAvaliar == null)
-			materiaisAvaliar = new ArrayList<Material>();
+int lista = Integer.parseInt(request.getParameter("avaliado"));
 int index = Integer.parseInt(request.getParameter("artigo"));
+ArrayList<Material> listaMateriais;
 sistema.cAvaliacao.setMaterialAvaliar(index);
-Material material = materiaisAvaliar.get(index);
-%>
+sistema.cAvaliacao.setUsarLista(lista);
 
+if(lista == 0){
+	listaMateriais = sistema.cAvaliacao.getListaMateriaisAvaliar();
+}else{
+	listaMateriais = sistema.cAvaliacao.getListaMateriaisAvaliados();
+}
+	
+Material material = listaMateriais.get(index);
+%>
 <tr>
 <td>Titulo do artigo:</td>
 <td><%=material.getTitulo() %></td>
@@ -40,8 +46,16 @@ Material material = materiaisAvaliar.get(index);
 </tr>
 
 <tr>
+<td>Resumo do artigo:</td>
+<td><%=material.getResumo() %></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
 <td>Download do artigo</td>
-<td><a href="../pdfs/algoritmos-adianta-slides.pdf" name="Artigo">Artigo para download</a></td>
+<td><a href="<%=material.getPwdArquivo()%>" name="Artigo">Artigo para download</a></td>
 <td></td>
 <td></td>
 <td></td>
@@ -57,7 +71,10 @@ Material material = materiaisAvaliar.get(index);
 </tr>
 
 <tr>
-<td><textarea name="comentarios" rows="10" cols="50"></textarea></td>
+<%
+int i = material.getAvaliadores().indexOf(new Integer(sistema.cAvaliacao.getIdAvaliadorLogado()));
+%>
+<td><textarea name="comentarios" rows="10" cols="50"><%=material.getComentarios().get(i)%></textarea></td>
 <td></td>
 <td></td>
 <td></td>
@@ -70,12 +87,12 @@ Material material = materiaisAvaliar.get(index);
 <tr>
 <td>Notas</td>
 
-<td>0<input type="radio" name="nota" value="0"></td>
-<td>1<input type="radio" name="nota" value="1"></td>
-<td>2<input type="radio" name="nota" value="2"></td>
-<td>3<input type="radio" name="nota" value="3"></td>
-<td>4<input type="radio" name="nota" value="4"></td>
-<td>5<input type="radio" name="nota" value="5"></td></tr>
+<td>0<input type="radio" name="nota" value="0" <%if(material.getNotas().get(i) == 0){%>checked="checked"<%}%> ></td>
+<td>1<input type="radio" name="nota" value="1" <%if(material.getNotas().get(i) == 1){%>checked="checked"<%}%> ></td>
+<td>2<input type="radio" name="nota" value="2" <%if(material.getNotas().get(i) == 2){%>checked="checked"<%}%> ></td>
+<td>3<input type="radio" name="nota" value="3" <%if(material.getNotas().get(i) == 3){%>checked="checked"<%}%> ></td>
+<td>4<input type="radio" name="nota" value="4" <%if(material.getNotas().get(i) == 4){%>checked="checked"<%}%> ></td>
+<td>5<input type="radio" name="nota" value="5" <%if(material.getNotas().get(i) == 5){%>checked="checked"<%}%> ></td></tr>
 </table>
 
 
