@@ -27,10 +27,6 @@ public class ControleDeSubmissao {
 		
 		material.setAvaliadores(database.getRndAvaliadores());
 
-		System.out.println("Avaliador 1 = " + material.getAvaliadores().get(0));
-		System.out.println("Avaliador 2 = " + material.getAvaliadores().get(1));
-		System.out.println("Avaliador 3 = " + material.getAvaliadores().get(2));
-		
 		boolean x = database.insertMaterial(material);
 		
 		System.out.println(x);
