@@ -89,6 +89,17 @@
    </servlet-mapping>
    
   <servlet>
+      <servlet-name>ExcluirArtigoServlet</servlet-name>
+      <servlet-class>ExcluirArtigoServlet</servlet-class>
+      <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+   <servlet-mapping>
+      <servlet-name>ExcluirArtigoServlet</servlet-name>
+      <url-pattern>/ExcluirArtigoServlet/*</url-pattern>
+   </servlet-mapping>
+   
+  <servlet>
       <servlet-name>PaginaInicial</servlet-name>
       <servlet-class>PaginaInicial</servlet-class>
       <load-on-startup>1</load-on-startup>

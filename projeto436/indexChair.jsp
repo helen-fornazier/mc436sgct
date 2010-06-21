@@ -1,6 +1,6 @@
 <jsp:include page="logo.jsp"></jsp:include>
 <jsp:include page="barraHorizontalChair.jsp"></jsp:include>
-
+<%@ page import="Control.Sistema" %>
 		<center>
 		     
       <!--TEXTO DA PAGINA-->       

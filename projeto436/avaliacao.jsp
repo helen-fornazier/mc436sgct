@@ -1,5 +1,3 @@
-<jsp:include page="logo.jsp"></jsp:include>
-<jsp:include page="barraHorizontalAvaliador.jsp"></jsp:include>
 <%@ page import="Control.Sistema" %>
 <%@ page import="DataBase.Material" %>
 <%@ page import="java.util.ArrayList" %>
@@ -8,11 +6,13 @@
 //Verifica se é é um autor que entrou nesta página
 		Sistema sistema = (Sistema)request.getSession().getAttribute("sistema");
 		if ( sistema == null || sistema.cLogin.getTipoUsuarioLogado().compareTo("avaliador") != 0){
-			RequestDispatcher rdIndex = request.getRequestDispatcher("acessoNaoPermitido.jsp");
+			RequestDispatcher rdIndex = request.getRequestDispatcher("PaginaInicial");
 			rdIndex.forward(request, response);
 			return;
 		}
  %>
+<jsp:include page="logo.jsp"></jsp:include>
+<jsp:include page="barraHorizontalAvaliador.jsp"></jsp:include>
 <!-- Tag de abertura do Form com metodo GET chamando o futuro Servlet AvaliacaoServlet -->
 <form action="AvaliacaoServlet" method="GET">
 

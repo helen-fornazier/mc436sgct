@@ -39,7 +39,7 @@ public class ControleDeAvaliacao {
 	}
 	
 	/**Pega a lista de materiais que já foram avaliados por este avaliador*/
-	public ArrayList getListaMateriaisAvaliados() {
+	public ArrayList<Material> getListaMateriaisAvaliados() {
 		
 		if(materiaisAvaliados == null)
 			this.getListaMateriaisAvaliador();

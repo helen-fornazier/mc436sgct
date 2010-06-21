@@ -151,7 +151,7 @@ public class DataBase implements Serializable{
 	 *   Se nao for Usuario -> -1
 	 *   Se for Usuario, mas nao Avaliador -> -2
 	 */
-	public ArrayList getRndAvaliadores(){
+	public ArrayList<Integer> getRndAvaliadores(){
 		
 		ArrayList<Integer> avaliadores = new ArrayList<Integer>();
 		Integer k; 
@@ -331,14 +331,25 @@ public class DataBase implements Serializable{
 	}
 	*/
 	
-	//busca todos os materiais relacionados com um avaliador
-	public ArrayList searchMaterial(Avaliador avaliador){
+	/**Busca todos os materiais relacionados com um avaliador*/
+	public ArrayList<Material> searchMaterial(Avaliador avaliador){
 		ArrayList<Material> materiais = new ArrayList<Material>();
 		System.out.println("Tamanho da lista de materiais = " + listaMaterial.size());
 		if(listaMaterial != null)
 			for (int i=0; i < listaMaterial.size(); i++)
 				for (int j=0; j < listaMaterial.get(i).getAvaliadores().size(); j++)
 					if(listaMaterial.get(i).getAvaliadores().get(j).compareTo(new Integer(avaliador.getIdUsuario())) == 0) materiais.add(listaMaterial.get(i));  
+		return materiais;
+	}
+	
+	/**Busca todos os materiais relacionados com um autor que o submeteu*/
+	public ArrayList<Material> searchMaterial(Autor autor){
+		ArrayList<Material> materiais = new ArrayList<Material>();
+		System.out.println("Tamanho da lista de materiais = " + listaMaterial.size());
+		if(listaMaterial != null)
+			for (int i=0; i < listaMaterial.size(); i++)
+				if(new Integer(listaMaterial.get(i).getIdUsuario()).compareTo(autor.getIdUsuario()) == 0) 
+					materiais.add(listaMaterial.get(i));  
 		return materiais;
 	}
 	
@@ -370,15 +381,10 @@ public class DataBase implements Serializable{
 		else return true;
 	}
 	
-	
-	
-	
-
-	
-	
-	
-	
-	
+	public boolean removeMaterial(Material material) {
+		return listaMaterial.remove(material);
+	}
+		
 	public void printDatabase(DataBase DB){
 		
 		//Usuario
