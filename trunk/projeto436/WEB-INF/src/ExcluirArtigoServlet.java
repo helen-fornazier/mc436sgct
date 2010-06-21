@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import Control.Sistema;
 import DataBase.Material;
 
-public class SubmissaoServlet extends HttpServlet {
+public class ExcluirArtigoServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
@@ -26,23 +26,11 @@ public class SubmissaoServlet extends HttpServlet {
 			return;
 		}
 		
-		String autores = String.valueOf(request.getParameter("autores"));
-		System.out.println("autores = "+autores);
-
-		String titulo = String.valueOf(request.getParameter("titulo"));
-		System.out.println("titulo = "+titulo);
+		Material material = (Material)request.getSession().getAttribute("materialASerExcluido");
+		System.out.println("PASSOU DA REMOCAO2");
+		System.out.println( sistema.cSubmissao.removerMaterial(material));
 		
-		String resumo = String.valueOf(request.getParameter("resumo"));
-		System.out.println("resumo = "+resumo);
-		
-		String arquivo = String.valueOf(request.getParameter("arquivo"));
-		System.out.println("arquivo = "+resumo);
-		
-		Material material = sistema.cSubmissao.novoMaterial(autores, resumo, titulo, arquivo);
-		
-		sistema.cSubmissao.registrarMaterial(material);
-		
-		RequestDispatcher rdIndex = request.getRequestDispatcher("submissaoSucesso.jsp");
+		RequestDispatcher rdIndex = request.getRequestDispatcher("listaArtigosSubmetidos.jsp");
 		rdIndex.forward(request, response);
 			
 	}

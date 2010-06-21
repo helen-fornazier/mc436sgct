@@ -1,3 +1,13 @@
+<%@ page import="Control.Sistema" %>
+<% 
+//Verifica se é é um autor que entrou nesta página
+		Sistema sistema = (Sistema)request.getSession().getAttribute("sistema");
+		if ( sistema == null || sistema.cLogin.getTipoUsuarioLogado().compareTo("autor") != 0){
+			RequestDispatcher rdIndex = request.getRequestDispatcher("PaginaInicial");
+			rdIndex.forward(request, response);
+			return;
+		}
+%>
 <jsp:include page="logo.jsp"></jsp:include>
 <jsp:include page="barraHorizontalAutor.jsp"></jsp:include>
 

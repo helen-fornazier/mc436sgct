@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import Control.Sistema;
+
 
 public class ConsultaArtigoAvaliado extends HttpServlet {
 
@@ -10,9 +12,15 @@ public class ConsultaArtigoAvaliado extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		Sistema sistema = (Sistema)request.getSession().getAttribute("sistema");
+		if(sistema == null) { //se não tem ninguem logado
+			RequestDispatcher rdIndex = request.getRequestDispatcher("PaginaInicial");
+			rdIndex.forward(request, response);
+			return;
+		}
 
-
-		ArrayList artigosAvaliados = new ArrayList();
+		ArrayList<String> artigosAvaliados = new ArrayList<String>();
 		artigosAvaliados.add("Avaliado 1");
 		artigosAvaliados.add("Avaliado 2");
 		artigosAvaliados.add("Avaliado 3");

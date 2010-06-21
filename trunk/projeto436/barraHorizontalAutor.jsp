@@ -5,7 +5,7 @@
 			<ul>
 				<li><a href="PaginaInicial">Inicio</a></li>
 				<li><a href="infoEvento.jsp">Informaoes do Evento</a></li>
-				<li><a href="submissao.jsp">Submissao</a></li>
+				<li><a href="listaArtigosSubmetidos.jsp">Submissao</a></li>
 			</ul>
 		</div>
 		<!-- end #menu -->

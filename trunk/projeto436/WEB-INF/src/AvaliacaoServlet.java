@@ -21,9 +21,10 @@ public class AvaliacaoServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		Sistema sistema = (Sistema)request.getSession().getAttribute("sistema");
-		if(sistema == null) {
-			sistema = new Sistema();
-			request.getSession().setAttribute("sistema", sistema);
+		if(sistema == null) { //se não tem ninguem logado
+			RequestDispatcher rdIndex = request.getRequestDispatcher("PaginaInicial");
+			rdIndex.forward(request, response);
+			return;
 		}
 		
 		String comentarios = String.valueOf(request.getParameter("comentarios"));

@@ -1,17 +1,17 @@
-<jsp:include page="logo.jsp"></jsp:include>
-<jsp:include page="barraHorizontalAvaliador.jsp"></jsp:include>
 <%@ page import="DataBase.Material" %>
 <%@ page import="Control.Sistema" %>
 <% 
-//Verifica se é é um autor que entrou nesta página
+//Verifica se é é um avaliador que entrou nesta página
 		Sistema sistema = (Sistema)request.getSession().getAttribute("sistema");
 		if ( sistema == null || sistema.cLogin.getTipoUsuarioLogado().compareTo("avaliador") != 0){
-			RequestDispatcher rdIndex = request.getRequestDispatcher("acessoNaoPermitido.jsp");
+			RequestDispatcher rdIndex = request.getRequestDispatcher("PaginaInicial");
 			rdIndex.forward(request, response);
 			return;
 		}
  %>
- 
+ <jsp:include page="logo.jsp"></jsp:include>
+<jsp:include page="barraHorizontalAvaliador.jsp"></jsp:include>
+
 <%@ page import="java.util.ArrayList" %>
 
 		<%--Comentario em JSP --%>

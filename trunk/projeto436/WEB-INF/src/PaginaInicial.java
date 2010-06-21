@@ -19,7 +19,7 @@ public class PaginaInicial extends HttpServlet {
 
 		//Le um atributo de session
 		Sistema sistema = (Sistema)request.getSession().getAttribute("sistema");
-		if (sistema == null) {
+		if(sistema == null) { //se não tem ninguem logado
 			RequestDispatcher rdIndex = request.getRequestDispatcher("index.jsp");
 			rdIndex.forward(request, response);
 			return;
