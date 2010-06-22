@@ -5,17 +5,17 @@
 			<li>
 				<h2>Datas Importantes</h2>
 				<ul>
-				<li>17/6</li>
-				<li>22/6</li>
-				<li>66/66</li>
-				<li>99/99</li>
+				<li>17/6 : Prova de MC436</li>
+				<li>22/6 : Apresentacao do sitema</li>
+				<li>24/6 : Entrega do relatorio</li>
+				<li>25/6 : Jogo do Brasil x Portugal</li>
 				</ul>
 			</li>
 			<li>
 				<h2>Ultimas Noticias</h2>
 				<ul>
-					<li>Precisamos criar no database listas de materiais avaliados, nao avaliados, sem avaliador e funcoes para altera-las</li>
-					<li>Precisamos criar o chair e dar uma interface para ele atribuir avaliadores para os materiais ou fazer isso automaticamente</li>
+					<li>O marcao (tambem conhecido como a cantina do IMECC) vai fechar em agosto</li>
+					<li>Esta é a nossa ultima atividade a ser entregue nesta materia.</li>
 					<li></li>
 					<li></li>
 					<li></li>

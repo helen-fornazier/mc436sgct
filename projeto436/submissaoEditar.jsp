@@ -26,11 +26,16 @@ Material material = materiaisSubmetidos.get(index);
 	<tr><td><b>Autores:</b></td> <td><%= material.getAutores() %></td></tr>
 	<tr><td><b>Resumo:</b></td> <td><%= material.getResumo() %></td></tr>
 	<tr><td><b>Arquivo:</b></td> <td><%= material.getPwdArquivo() %></td></tr>
-	<%if(!(material.getNotas().size() == 1  && material.getNotas().get(0).compareTo(new Integer(-1)) == 0 )) { %>
-		<tr><td><b>Notas:</b></td> <td><%= material.getNotas() %></td></tr>
-		<% for(int i=0; i < material.getComentarios().size(); i++ ) {%>
-			<tr><td><b>Comentários:</b></td> <td><%= material.getComentarios().get(i) %></td></tr>
+	<% int k = 0; %>
+	<% for(int i=0; i < material.getNotas().size(); i++ ) { %>
+	<% if(material.getNotas().get(i) != -1){ %>
+		<% k++; %>
+		<tr><td><b>Nota <%=k%>:</b></td> <td><%= material.getNotas().get(i)%></td></tr>
+		<tr><td><b>Comentário <%=k%>:</b></td> <td><%= material.getComentarios().get(i) %></td></tr>
 		<% } %>
+	<% } %>
+	<% if(k == 0){ %>
+	<tr><td><b>Nota :</b></td> <td>O material ainda nao foi avaliado.</td></tr>
 	<% } %>
 	
 </table>
@@ -49,7 +54,6 @@ Para Editar o Arquivo, basta nos enviar seu novo arquivo:
 	</div>
 </form>
 
-<br> <br>
 <br> <br>
 
 <!-- Um titulo centralizado na pagina-->

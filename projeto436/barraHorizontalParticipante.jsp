@@ -17,7 +17,7 @@
 					%>
 					<table>
 					
-					<td><font size="2">Bem vindo <%=sistema.cLogin.getUsuarioLogado().getLogin()%>!</font></td>
+					<td><font size="2">Bem vindo <%=sistema.cLogin.getUsuarioLogado().getNome()%>!</font></td>
 					<td><li><a href="LogoutServlet">Logout</a></li></td>
 					
 					</table>
