@@ -10,10 +10,19 @@ public class ControleDeSubmissao {
 	Autor autorLogado;
 	Sistema sistema;
 	private ArrayList<Material> materiaisSubmetidos;
+	private int arquivoEmEdicao;
 	
 	public ControleDeSubmissao(Sistema sistema){
 		this.sistema = sistema;
 		this.autorLogado = null;
+	}
+	
+	public void setArquivoEmEdicao(int i){
+		arquivoEmEdicao = i;
+	}
+	
+	public int getArquivoEmEdicao(){
+		return arquivoEmEdicao;
 	}
 	
 	public Material novoMaterial(String autores, String resumo, String titulo, String pwdArquivo){
@@ -73,6 +82,23 @@ public class ControleDeSubmissao {
 		if(database.removeMaterial(material.getTitulo())){
 			storage.saveDataBase(database);
 			this.materiaisSubmetidos.remove(material);
+			return true;
+		}
+		else return false;
+	}
+	
+	/**Altera material do autor logado com o determinado titulo*/
+	public boolean alteraMaterial(Material material, String novoArquivo) {
+		StorageDB storage = new StorageDB();
+		DataBase database = storage.loadDataBase();
+		
+		material.setPwdArquivo(novoArquivo);
+		
+		System.out.println("Entrou na alteracao no ControleDeSubmissao");
+		if(database.insertMaterial(material)){
+			storage.saveDataBase(database);
+			//dá update na lista de materiais submetidos
+			this.materiaisSubmetidos = this.getMateriaisSubmetidosFromDB();
 			return true;
 		}
 		else return false;

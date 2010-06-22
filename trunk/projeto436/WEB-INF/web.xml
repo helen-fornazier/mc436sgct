@@ -110,6 +110,17 @@
       <url-pattern>/PaginaInicial/*</url-pattern>
    </servlet-mapping>
 
+  <servlet>
+      <servlet-name>AlterarArtigoServlet</servlet-name>
+      <servlet-class>AlterarArtigoServlet</servlet-class>
+      <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+   <servlet-mapping>
+      <servlet-name>AlterarArtigoServlet</servlet-name>
+      <url-pattern>/AlterarArtigoServlet/*</url-pattern>
+   </servlet-mapping>
+
 </web-app>
 
 
