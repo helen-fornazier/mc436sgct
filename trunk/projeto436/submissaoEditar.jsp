@@ -42,7 +42,7 @@ Para Editar o Arquivo, basta nos enviar seu novo arquivo:
 <form action="listaArtigosSubmetidos.jsp" method="GET">
 	<div>
 		<% request.getSession().setAttribute("materialASerExcluido", material); %>
-		<input type="submit" value="Submeter arquivo"> Esta Opção irá excluir permanetemente o Artigo da conferência.
+		<input type="submit" value="Submeter arquivo"> Esta opção irá substituir o arquivo submetido anteriormente.
 	</div>
 </form>
 
@@ -54,7 +54,7 @@ Para Editar o Arquivo, basta nos enviar seu novo arquivo:
 <form action="ExcluirArtigoServlet" method="GET">
 	<div>
 		<% request.getSession().setAttribute("materialASerExcluido", material); %>
-		<input type="submit" value="Excluir Artigo"> Esta Opção irá excluir permanetemente o Artigo da conferência.
+		<input type="submit" value="Excluir Artigo"> Esta opção irá excluir permanetemente o Artigo da conferência.
 	</div>
 </form>
 
