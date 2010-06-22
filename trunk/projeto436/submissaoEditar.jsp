@@ -39,6 +39,12 @@ Material material = materiaisSubmetidos.get(index);
   <p align="center"><b><font size="5">Editar o artigo:</font></b></p>
 Para Editar o Arquivo, basta nos enviar seu novo arquivo:
 <td><input type="file" name="arquivo" size="50"></td>
+<form action="listaArtigosSubmetidos.jsp" method="GET">
+	<div>
+		<% request.getSession().setAttribute("materialASerExcluido", material); %>
+		<input type="submit" value="Submeter arquivo"> Esta Opção irá excluir permanetemente o Artigo da conferência.
+	</div>
+</form>
 
 <br> <br>
 <br> <br>
