@@ -16,17 +16,13 @@
           <span style="font-size: 8,5pt">O Sistema de Gerenciamento de Conferencias Tecnologicas (SGCT) proposto e
 			uma colecao de sistemas e utilitirios usados para anunciar, preparar e apoiar
 			uma conferencia tecnologica.
-   		  </span>
+
 		
 		<p>&nbsp;</p>
-		<p>&nbsp;</p>
-		PARTICIPANTEEEEEEEEEEEEEEEEEEEEEEE
-		<p>&nbsp;</p>
-		<p>&nbsp;</p>
-		
-          <span style="font-size: 8,5pt">Para realizar a inscricao na <b>Conferencia MC436 2010</b>, acesse sua
-          <a href="areaReservada.jsp">Area reservada</a>
-          </span>
+
+		Esta e sua pagina principal, aqui serao exividas noticias e informacoes referentes aos PARTICIPANTES!
+
+    	</span>
     	
     	</center>
     	
