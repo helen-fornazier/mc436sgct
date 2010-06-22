@@ -69,7 +69,6 @@ public class Material implements Serializable {
 	public float averageNota(){
 		
 		float media = 0;
-		
 		for (int i = 0; i < this.notas.size(); i++) {
 			media = media + this.notas.get(i);
 		}

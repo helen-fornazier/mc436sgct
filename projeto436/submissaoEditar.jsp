@@ -14,6 +14,7 @@
 <jsp:include page="barraHorizontalAutor.jsp"></jsp:include> 
  <%
 int index = Integer.parseInt(request.getParameter("artigo"));
+sistema.cSubmissao.setArquivoEmEdicao(index);
 ArrayList<Material> materiaisSubmetidos = sistema.cSubmissao.getMateriaisSubmetidos();
 Material material = materiaisSubmetidos.get(index);
 %>
@@ -24,6 +25,7 @@ Material material = materiaisSubmetidos.get(index);
 	<tr><td><b>Título:</b></td> <td><%= material.getTitulo() %></td></tr>
 	<tr><td><b>Autores:</b></td> <td><%= material.getAutores() %></td></tr>
 	<tr><td><b>Resumo:</b></td> <td><%= material.getResumo() %></td></tr>
+	<tr><td><b>Arquivo:</b></td> <td><%= material.getPwdArquivo() %></td></tr>
 	<%if(!(material.getNotas().size() == 1  && material.getNotas().get(0).compareTo(new Integer(-1)) == 0 )) { %>
 		<tr><td><b>Notas:</b></td> <td><%= material.getNotas() %></td></tr>
 		<% for(int i=0; i < material.getComentarios().size(); i++ ) {%>
@@ -38,10 +40,11 @@ Material material = materiaisSubmetidos.get(index);
 <!-- Um titulo centralizado na pagina-->
   <p align="center"><b><font size="5">Editar o artigo:</font></b></p>
 Para Editar o Arquivo, basta nos enviar seu novo arquivo:
-<td><input type="file" name="arquivo" size="50"></td>
-<form action="listaArtigosSubmetidos.jsp" method="GET">
+<form action="AlterarArtigoServlet" method="GET">
 	<div>
-		<% request.getSession().setAttribute("materialASerExcluido", material); %>
+		<input type="file" name="arquivo" size="50">
+		<br>
+		<% request.getSession().setAttribute("materialASerAlterado", material); %>
 		<input type="submit" value="Submeter arquivo"> Esta opção irá substituir o arquivo submetido anteriormente.
 	</div>
 </form>
