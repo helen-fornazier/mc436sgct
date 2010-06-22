@@ -65,27 +65,17 @@ public class ControleDeSubmissao {
 	}
 	
 	/**Remove material do autor logado com o determinado titulo*/
-	public boolean removerMaterial(String titulo) {
-		Material materialASerRemovido = this.getMaterial(titulo);
-		//Se não há material, não há necessidade de entrar no database.
-		return this.removerMaterial(materialASerRemovido);
-	}
-	
-	/**Remove material do autor
-	 * Se não removeu nenhum retorna falso
-	 * Se parametro passado é nulo, retorna falso*/
 	public boolean removerMaterial(Material material) {
-		//Se não há material, não há necessidade de entrar no database.
-		if(material == null)
-			return false;
-		else {
-			StorageDB storage = new StorageDB();
-			DataBase database = storage.loadDataBase();
-			if(database.removeMaterial(material) == false)
-				return false;
+		StorageDB storage = new StorageDB();
+		DataBase database = storage.loadDataBase();
+		
+		System.out.println("Entrou na remocao no ControleDeSubmissao");
+		if(database.removeMaterial(material.getTitulo())){
 			storage.saveDataBase(database);
+			this.materiaisSubmetidos.remove(material);
 			return true;
 		}
+		else return false;
 	}
 	
 	/**Retorna o material do autor logado com o determinado titulo

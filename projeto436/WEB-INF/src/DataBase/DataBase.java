@@ -381,10 +381,6 @@ public class DataBase implements Serializable{
 		else return true;
 	}
 	
-	public boolean removeMaterial(Material material) {
-		return listaMaterial.remove(material);
-	}
-		
 	public void printDatabase(DataBase DB){
 		
 		//Usuario
