@@ -39,20 +39,6 @@ Material material = materiaisSubmetidos.get(index);
 	<% } %>
 	
 </table>
-<br> <br>
-<br> <br>
-
-<!-- Um titulo centralizado na pagina-->
-  <p align="center"><b><font size="5">Editar o artigo:</font></b></p>
-Para Editar o Arquivo, basta nos enviar seu novo arquivo:
-<form action="AlterarArtigoServlet" method="GET">
-	<div>
-		<input type="file" name="arquivo" size="50">
-		<br>
-		<% request.getSession().setAttribute("materialASerAlterado", material); %>
-		<input type="submit" value="Submeter arquivo"> Esta opção irá substituir o arquivo submetido anteriormente.
-	</div>
-</form>
 
 <jsp:include page="barraLateral.jsp"></jsp:include>
 <jsp:include page="rodape.jsp"></jsp:include>

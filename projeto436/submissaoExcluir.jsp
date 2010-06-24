@@ -43,14 +43,11 @@ Material material = materiaisSubmetidos.get(index);
 <br> <br>
 
 <!-- Um titulo centralizado na pagina-->
-  <p align="center"><b><font size="5">Editar o artigo:</font></b></p>
-Para Editar o Arquivo, basta nos enviar seu novo arquivo:
-<form action="AlterarArtigoServlet" method="GET">
+  <p align="center"><b><font size="5">Excluir o artigo:</font></b></p>
+<form action="ExcluirArtigoServlet" method="GET">
 	<div>
-		<input type="file" name="arquivo" size="50">
-		<br>
-		<% request.getSession().setAttribute("materialASerAlterado", material); %>
-		<input type="submit" value="Submeter arquivo"> Esta opção irá substituir o arquivo submetido anteriormente.
+		<% request.getSession().setAttribute("materialASerExcluido", material); %>
+		<input type="submit" value="Excluir Artigo"> Esta opção irá excluir permanetemente o Artigo da conferência.
 	</div>
 </form>
 

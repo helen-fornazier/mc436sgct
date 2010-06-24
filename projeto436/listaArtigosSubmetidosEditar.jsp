@@ -24,10 +24,12 @@
 		%>
 		
 		<%--Imprime o valor da variavel 'arrayAvaliar'--%>
-		<p align="center"><b><font size="5">Consultar o artigo</font></b></p>
+		<p align="center"><b><font size="5">Editar o artigo</font></b></p>
 		
 		<% for(int i=0; i<materiaisSubmetidos.size(); i++){%>
-			<a href="submissaoConsultar.jsp?artigo=<%=i%>">Artigo <%=i%>: <%=materiaisSubmetidos.get(i).getTitulo()%></a> <br> <br>
+			<%if(!materiaisSubmetidos.get(i).getAvaliado()) { %>
+				<a href="submissaoEditar.jsp?artigo=<%=i%>">Artigo <%=i%>: <%=materiaisSubmetidos.get(i).getTitulo()%></a> <br> <br>
+			<%} %>
 		<%} %>
 <jsp:include page="barraLateral.jsp"></jsp:include>
 <jsp:include page="rodape.jsp"></jsp:include>

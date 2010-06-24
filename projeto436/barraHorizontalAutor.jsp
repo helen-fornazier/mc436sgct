@@ -3,9 +3,12 @@
 	<div id="header">
 		<div id="menu">
 			<ul>
-				<li><a href="PaginaInicial">Inicio</a></li>
-				<li><a href="infoEvento.jsp">Informaoes do Evento</a></li>
-				<li><a href="listaArtigosSubmetidos.jsp">Submissao</a></li>
+				<li><a href="PaginaInicial"><font size="1">Inicio</font></a></li>
+				<li><a href="infoEvento.jsp"><font size="1">Informacoes</font></a></li>
+				<li><a href="submissao.jsp"><font size="1">Submissao</font></a></li>
+				<li><a href="listaArtigosSubmetidos.jsp"><font size="1">Consultar</font></a></li>
+				<li><a href="listaArtigosSubmetidosEditar.jsp"><font size="1">Editar</font></a></li>
+				<li><a href="listaArtigosSubmetidosExcluir.jsp"><font size="1">Excluir</font></a></li>
 			</ul>
 		</div>
 		<!-- end #menu -->
