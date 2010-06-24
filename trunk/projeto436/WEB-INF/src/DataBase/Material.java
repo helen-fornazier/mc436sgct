@@ -147,6 +147,7 @@ public class Material implements Serializable {
 			if(avaliadores.get(i).compareTo(new Integer(idAvaliador)) == 0){
 				this.notas.set(i, new Integer(nota));
 				this.comentarios.set(i, comentario);
+				this.avaliado = true;
 			}
 	}
 	

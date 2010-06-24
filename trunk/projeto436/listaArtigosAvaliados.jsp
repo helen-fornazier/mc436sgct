@@ -26,12 +26,11 @@
 		if (materiaisAvaliados == null)
 			materiaisAvaliados = new ArrayList<Material>();
 		%>
+				<%--Imprime o valor da variavel 'arrayAvaliar'--%>
+		<p align="center"><b><font size="5">Alterar Avaliacao</font></b></p>
 		
-		<%--Imprime o valor da variavel 'arrayAvaliar'--%>
-		<p align="center"><b><font size="5">Artigos Para Avaliar</font></b></p>
-		
-		<% for(int i=0; i<materiaisAvaliar.size(); i++){%>
-			<a href="avaliacao.jsp?artigo=<%=i%>&avaliado=0">Artigo <%=i%>: <%=materiaisAvaliar.get(i).getTitulo()%></a> <br> <br>
+		<% for(int i=0; i<materiaisAvaliados.size(); i++){%>
+			<a href="avaliacao.jsp?artigo=<%=i%>&avaliado=1">Artigo <%=i%>: <%=materiaisAvaliados.get(i).getTitulo()%> </a><br> <br>
 		<%} %>
 
 <jsp:include page="barraLateral.jsp"></jsp:include>

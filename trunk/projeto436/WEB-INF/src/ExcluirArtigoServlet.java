@@ -29,7 +29,7 @@ public class ExcluirArtigoServlet extends HttpServlet {
 		Material material = (Material)request.getSession().getAttribute("materialASerExcluido");
 		System.out.println( sistema.cSubmissao.removerMaterial(material));
 		
-		RequestDispatcher rdIndex = request.getRequestDispatcher("listaArtigosSubmetidos.jsp");
+		RequestDispatcher rdIndex = request.getRequestDispatcher("listaArtigosSubmetidosExcluir.jsp");
 		rdIndex.forward(request, response);
 			
 	}

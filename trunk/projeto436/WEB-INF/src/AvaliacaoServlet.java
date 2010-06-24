@@ -45,9 +45,16 @@ public class AvaliacaoServlet extends HttpServlet {
 			
 		Material material = listaMateriais.get(i);
 		
+		boolean aval = material.getAvaliado();
+		
 		sistema.cAvaliacao.AvaliarMaterial(material, Integer.parseInt(nota), comentarios);
-
-		RequestDispatcher rdIndex = request.getRequestDispatcher("listaArtigosAvaliacao.jsp");
+		
+		RequestDispatcher rdIndex;
+		if(aval)
+			rdIndex = request.getRequestDispatcher("listaArtigosAvaliados.jsp");
+		else
+			rdIndex = request.getRequestDispatcher("listaArtigosAvaliacao.jsp");
+		
 		rdIndex.forward(request, response);
 	}	
 }
