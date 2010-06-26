@@ -4,7 +4,7 @@
 //Verifica se é é um autor que entrou nesta página
 		Sistema sistema = (Sistema)request.getSession().getAttribute("sistema");
 		if ( sistema == null || sistema.cLogin.getTipoUsuarioLogado().compareTo("autor") != 0){
-			RequestDispatcher rdIndex = request.getRequestDispatcher("index.jsp");
+			RequestDispatcher rdIndex = request.getRequestDispatcher("acessoNaoPermitido.jsp");
 			rdIndex.forward(request, response);
 			return;
 		}
