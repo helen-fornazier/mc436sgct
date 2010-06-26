@@ -20,7 +20,7 @@
 		
 		<p>&nbsp;</p>
 
-		Esta e sua pagina principal, aqui serao exividas noticias e informacoes referentes aos PARTICIPANTES!
+		Esta e sua pagina de informacoes, aqui serao exibidas as informacoes particulares de cada PARTICIPANTE!
 
     	</span>
     	
